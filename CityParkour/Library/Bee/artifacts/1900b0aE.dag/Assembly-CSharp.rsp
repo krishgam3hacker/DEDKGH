@@ -115,6 +115,7 @@
 -define:ENABLE_TILEMAP
 -define:ENABLE_TIMELINE
 -define:ENABLE_INPUT_SYSTEM
+-define:ENABLE_LEGACY_INPUT_MANAGER
 -define:STARTER_ASSETS_PACKAGES_CHECKED
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
@@ -370,6 +371,10 @@
 "Assets/Mobile/Scripts/VirtualInputs/UIVirtualJoystick.cs"
 "Assets/Mobile/Scripts/VirtualInputs/UIVirtualTouchZone.cs"
 "Assets/Scripts/BasicRigidBodyPush.cs"
+"Assets/Scripts/GrapplingGun.cs"
+"Assets/Scripts/MoveCamera.cs"
+"Assets/Scripts/PlayerMovement.cs"
+"Assets/Scripts/RotateGun.cs"
 "Assets/Scripts/ThirdPersonController.cs"
 "Assets/TutorialInfo/Scripts/Readme.cs"
 -langversion:9.0
