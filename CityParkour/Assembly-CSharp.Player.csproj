@@ -56,19 +56,20 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\kalson\PlayerMovement.cs" />
     <Compile Include="Assets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs" />
     <Compile Include="Assets\InputSystem\StarterAssetsInputs.cs" />
     <Compile Include="Assets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs" />
     <Compile Include="Assets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs" />
-    <Compile Include="Assets\Scripts\RotateGun.cs" />
+    <Compile Include="Assets\Scripts\kalson\RotateGun.cs" />
     <Compile Include="Assets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs" />
     <Compile Include="Assets\Mobile\Scripts\VirtualInputs\UIVirtualTouchZone.cs" />
-    <Compile Include="Assets\Scripts\MoveCamera.cs" />
+    <Compile Include="Assets\Scripts\kalson\MoveCamera.cs" />
     <Compile Include="Assets\Scripts\BasicRigidBodyPush.cs" />
-    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\ThirdPersonController.cs" />
-    <Compile Include="Assets\Scripts\GrapplingGun.cs" />
+    <Compile Include="Assets\Scripts\kalson\GrapplingGun.cs" />
+    <Compile Include="Assets\Scenes\WallRunning.cs" />
+    <Compile Include="Assets\Scenes\PlayerMovementAdvanced.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\license.txt" />
@@ -724,6 +725,10 @@
     <ProjectReference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.Player.csproj">
       <Project>{B094897F-CB4F-B32F-4DBD-9BAF1FB69F1A}</Project>
       <Name>Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.Player</Name>
+    </ProjectReference>
+    <ProjectReference Include="Unity.ProBuilder.Player.csproj">
+      <Project>{6AD2830B-EC33-9663-96ED-E89466BD5A76}</Project>
+      <Name>Unity.ProBuilder.Player</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
