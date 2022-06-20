@@ -56,21 +56,22 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scenes\MoveCamera.cs" />
     <Compile Include="Assets\Scripts\kalson\PlayerMovement.cs" />
     <Compile Include="Assets\Mobile\Scripts\VirtualInputs\UIVirtualButton.cs" />
     <Compile Include="Assets\InputSystem\StarterAssetsInputs.cs" />
     <Compile Include="Assets\Mobile\Scripts\CanvasInputs\UICanvasControllerInput.cs" />
     <Compile Include="Assets\Mobile\Scripts\Utilities\MobileDisableAutoSwitchControls.cs" />
+    <Compile Include="Assets\Scenes\PlayerCam.cs" />
     <Compile Include="Assets\Scripts\kalson\RotateGun.cs" />
     <Compile Include="Assets\Mobile\Scripts\VirtualInputs\UIVirtualJoystick.cs" />
     <Compile Include="Assets\Mobile\Scripts\VirtualInputs\UIVirtualTouchZone.cs" />
-    <Compile Include="Assets\Scripts\kalson\MoveCamera.cs" />
     <Compile Include="Assets\Scripts\BasicRigidBodyPush.cs" />
     <Compile Include="Assets\Scenes\WallRunning.cs" />
     <Compile Include="Assets\Scripts\ThirdPersonController.cs" />
     <Compile Include="Assets\Scripts\kalson\GrapplingGun.cs" />
+    <Compile Include="Assets\Scenes\Sliding.cs" />
     <Compile Include="Assets\Scenes\PlayerMovementAdvanced.cs" />
-    <Compile Include="Assets\Scenes\PlayerCam.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\license.txt" />
