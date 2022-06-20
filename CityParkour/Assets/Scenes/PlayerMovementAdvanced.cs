@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerMovementTutorial : MonoBehaviour
+public class PlayerMovementAdvanced : MonoBehaviour
 {
     [Header("Movement")]
     public float moveSpeed;
@@ -30,6 +30,9 @@ public class PlayerMovementTutorial : MonoBehaviour
 
     float horizontalInput;
     float verticalInput;
+
+    public float wallrunSpeed;
+    public bool wallrunning;
 
     Vector3 moveDirection;
 

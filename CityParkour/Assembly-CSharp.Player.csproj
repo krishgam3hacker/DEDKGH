@@ -66,10 +66,11 @@
     <Compile Include="Assets\Mobile\Scripts\VirtualInputs\UIVirtualTouchZone.cs" />
     <Compile Include="Assets\Scripts\kalson\MoveCamera.cs" />
     <Compile Include="Assets\Scripts\BasicRigidBodyPush.cs" />
+    <Compile Include="Assets\Scenes\WallRunning.cs" />
     <Compile Include="Assets\Scripts\ThirdPersonController.cs" />
     <Compile Include="Assets\Scripts\kalson\GrapplingGun.cs" />
-    <Compile Include="Assets\Scenes\WallRunning.cs" />
     <Compile Include="Assets\Scenes\PlayerMovementAdvanced.cs" />
+    <Compile Include="Assets\Scenes\PlayerCam.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\license.txt" />
@@ -682,6 +683,10 @@
       <Project>{46B41D79-C3D2-3921-3F7A-0FFA8DE4B27C}</Project>
       <Name>Unity.RenderPipelines.Core.Runtime.Player</Name>
     </ProjectReference>
+    <ProjectReference Include="Unity.ProBuilder.Player.csproj">
+      <Project>{6AD2830B-EC33-9663-96ED-E89466BD5A76}</Project>
+      <Name>Unity.ProBuilder.Player</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.InputSystem.Player.csproj">
       <Project>{B9EC1933-3F42-5CC7-8DCB-005206BCDD96}</Project>
       <Name>Unity.InputSystem.Player</Name>
@@ -725,10 +730,6 @@
     <ProjectReference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.Player.csproj">
       <Project>{B094897F-CB4F-B32F-4DBD-9BAF1FB69F1A}</Project>
       <Name>Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.ProBuilder.Player.csproj">
-      <Project>{6AD2830B-EC33-9663-96ED-E89466BD5A76}</Project>
-      <Name>Unity.ProBuilder.Player</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

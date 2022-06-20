@@ -56,15 +56,15 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.4\External\CSG\Classes\Vertex.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.4\External\CSG\Classes\Model.cs" />
-    <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.4\External\CSG\CSG.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.4\External\CSG\Classes\Polygon.cs" />
-    <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.4\External\CSG\Classes\Plane.cs" />
+    <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.4\External\CSG\Classes\Node.cs" />
+    <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.4\External\CSG\CSG.cs" />
+    <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.4\External\CSG\Classes\VertexUtility.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.4\External\CSG\Classes\VertexAttributes.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.4\External\CSG\AssemblyInfo.cs" />
-    <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.4\External\CSG\Classes\Node.cs" />
-    <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.4\External\CSG\Classes\VertexUtility.cs" />
+    <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.4\External\CSG\Classes\Vertex.cs" />
+    <Compile Include="Library\PackageCache\com.unity.probuilder@5.0.4\External\CSG\Classes\Plane.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Library\PackageCache\com.unity.probuilder@5.0.4\External\CSG\Unity.ProBuilder.Csg.asmdef" />
