@@ -117,8 +117,12 @@
 -define:ENABLE_INPUT_SYSTEM
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:STARTER_ASSETS_PACKAGES_CHECKED
+-define:UNITY_POST_PROCESSING_STACK_V2
+-define:PPV2_EXISTS
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/Plugins/Demigiant/DOTween/DOTween.dll"
+-r:"Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.4f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.4f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.4f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
@@ -346,6 +350,8 @@
 -r:"E:/GitRepo/Dedsec-Studios/CityParkour/Library/PackageCache/com.unity.collab-proxy@1.15.17/Lib/Editor/PlasticSCM/unityplastic.dll"
 -r:"E:/GitRepo/Dedsec-Studios/CityParkour/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll"
 -r:"E:/GitRepo/Dedsec-Studios/CityParkour/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/Newtonsoft.Json.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Postprocessing.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Postprocessing.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.RenderPipelines.Core.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.RenderPipelines.Core.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.RenderPipelines.Universal.Editor.ref.dll"

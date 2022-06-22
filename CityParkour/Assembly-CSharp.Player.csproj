@@ -296,6 +296,9 @@
     <Reference Include="clipper_library">
       <HintPath>Library\PackageCache\com.unity.cinemachine@2.8.4\Runtime\ThirdParty\clipper_library.dll</HintPath>
     </Reference>
+    <Reference Include="DOTween">
+      <HintPath>Assets\Plugins\Demigiant\DOTween\DOTween.dll</HintPath>
+    </Reference>
     <Reference Include="netstandard">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.4f1\Editor\Data\NetStandard\ref\2.1.0\netstandard.dll</HintPath>
     </Reference>
@@ -664,6 +667,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.Player.csproj">
+      <Project>{63C4ACD5-3BFB-CF4B-E6AD-154DA5FC08B7}</Project>
+      <Name>Assembly-CSharp-firstpass.Player</Name>
+    </ProjectReference>
     <ProjectReference Include="Unity.RenderPipelines.Universal.Shaders.Player.csproj">
       <Project>{6B0C003B-09AB-DF3C-56D0-8F54E46B99AB}</Project>
       <Name>Unity.RenderPipelines.Universal.Shaders.Player</Name>
@@ -683,10 +690,6 @@
     <ProjectReference Include="Unity.RenderPipelines.Core.Runtime.Player.csproj">
       <Project>{46B41D79-C3D2-3921-3F7A-0FFA8DE4B27C}</Project>
       <Name>Unity.RenderPipelines.Core.Runtime.Player</Name>
-    </ProjectReference>
-    <ProjectReference Include="Unity.ProBuilder.Player.csproj">
-      <Project>{6AD2830B-EC33-9663-96ED-E89466BD5A76}</Project>
-      <Name>Unity.ProBuilder.Player</Name>
     </ProjectReference>
     <ProjectReference Include="Unity.InputSystem.Player.csproj">
       <Project>{B9EC1933-3F42-5CC7-8DCB-005206BCDD96}</Project>

@@ -117,8 +117,10 @@
 -define:ENABLE_INPUT_SYSTEM
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:STARTER_ASSETS_PACKAGES_CHECKED
+-define:UNITY_POST_PROCESSING_STACK_V2
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/Plugins/Demigiant/DOTween/DOTween.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.4f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.4f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.4f1/Editor/Data/Managed/UnityEngine/UnityEditor.DiagnosticsModule.dll"
@@ -333,6 +335,7 @@
 -r:"E:/GitRepo/Dedsec-Studios/CityParkour/Library/PackageCache/com.unity.burst@1.6.5/Unity.Burst.Unsafe.dll"
 -r:"E:/GitRepo/Dedsec-Studios/CityParkour/Library/PackageCache/com.unity.cinemachine@2.8.4/Runtime/ThirdParty/clipper_library.dll"
 -r:"E:/GitRepo/Dedsec-Studios/CityParkour/Library/PackageCache/com.unity.nuget.newtonsoft-json@3.0.2/Runtime/Newtonsoft.Json.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Assembly-CSharp-firstpass.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Cinemachine.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/com.unity.cinemachine.editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/PPv2URPConverters.ref.dll"
@@ -342,10 +345,8 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Mathematics.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Mathematics.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.PlasticSCM.Editor.ref.dll"
--r:"Library/Bee/artifacts/1900b0aE.dag/Unity.ProBuilder.AddOns.Editor.ref.dll"
--r:"Library/Bee/artifacts/1900b0aE.dag/Unity.ProBuilder.AssetIdRemapUtility.ref.dll"
--r:"Library/Bee/artifacts/1900b0aE.dag/Unity.ProBuilder.Editor.ref.dll"
--r:"Library/Bee/artifacts/1900b0aE.dag/Unity.ProBuilder.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Postprocessing.Editor.ref.dll"
+-r:"Library/Bee/artifacts/1900b0aE.dag/Unity.Postprocessing.Runtime.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.RenderPipeline.Universal.ShaderLibrary.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.RenderPipelines.Core.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.RenderPipelines.Core.Runtime.ref.dll"

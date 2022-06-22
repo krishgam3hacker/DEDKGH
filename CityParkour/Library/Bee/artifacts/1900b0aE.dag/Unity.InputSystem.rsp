@@ -117,6 +117,7 @@
 -define:ENABLE_INPUT_SYSTEM
 -define:ENABLE_LEGACY_INPUT_MANAGER
 -define:STARTER_ASSETS_PACKAGES_CHECKED
+-define:UNITY_POST_PROCESSING_STACK_V2
 -define:UNITY_INPUT_SYSTEM_ENABLE_VR
 -define:UNITY_XR_AVAILABLE
 -define:UNITY_INPUT_SYSTEM_ENABLE_PHYSICS
@@ -124,6 +125,8 @@
 -define:UNITY_INPUT_SYSTEM_ENABLE_UI
 -define:CSHARP_7_OR_LATER
 -define:CSHARP_7_3_OR_NEWER
+-r:"Assets/Plugins/Demigiant/DOTween/DOTween.dll"
+-r:"Assets/Plugins/Demigiant/DOTween/Editor/DOTweenEditor.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.4f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.4f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
 -r:"C:/Program Files/Unity/Hub/Editor/2021.3.4f1/Editor/Data/Managed/UnityEngine/UnityEditor.DeviceSimulatorModule.dll"
