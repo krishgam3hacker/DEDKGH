@@ -130,3 +130,9 @@
 
 #Random
 Dungeon Rush/Library/ArtifactDB
+*lld filter=lfs diff=lfs merge=lfs -text
+lld filter=lfs diff=lfs merge=lfs -text
+llvm-lipo filter=lfs diff=lfs merge=lfs -text
+dsymutil filter=lfs diff=lfs merge=lfs -text
+hostmac/* filter=lfs diff=lfs merge=lfs -text
+PackageCache/* filter=lfs diff=lfs merge=lfs -text
