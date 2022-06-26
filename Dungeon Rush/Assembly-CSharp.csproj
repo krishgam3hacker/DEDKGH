@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\KeyHolder.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Resourcess\CodeMonkey\Utils\Button_UI.cs" />
     <Compile Include="Assets\Resourcess\TextMesh Pro\Examples &amp; Extras\Scripts\SkewTextExample.cs" />
     <Compile Include="Assets\Resourcess\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\Resourcess\CodeMonkey\Utils\World_Mesh.cs" />
@@ -155,7 +156,6 @@
     <Compile Include="Assets\Resourcess\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\Resourcess\CodeMonkey\CMDebug.cs" />
     <Compile Include="Assets\Resourcess\CodeMonkey\Utils\FunctionPeriodic.cs" />
-    <Compile Include="Assets\Resourcess\CodeMonkey\Utils\Button_UI.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Resourcess\TextMesh Pro\Shaders\TMPro.cginc" />
