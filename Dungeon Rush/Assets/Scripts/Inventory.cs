@@ -11,4 +11,5 @@ public class Inventory : MonoBehaviour
     {
         slots = GameObject.FindGameObjectsWithTag("slot");
     }
+
 }
