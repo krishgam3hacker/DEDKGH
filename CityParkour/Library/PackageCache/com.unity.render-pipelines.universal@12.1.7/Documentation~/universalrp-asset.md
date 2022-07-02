@@ -1,7 +1,7 @@
 # Universal Render Pipeline Asset
-To use the Universal Render Pipeline (URP), you have to [create a URP Asset and assign the asset in the Graphics settings](configuring-universalrp-for-use.md).
+To use the Universal Render Pipeline (URP), you have to [create a URP Asset and assign the asset in the Graphics settings](InstallURPIntoAProject.md).
 
-The URP Asset controls several graphical features and quality settings for the Universal Render Pipeline.  It is a scriptable object that inherits from ‘RenderPipelineAsset’. When you assign the asset in the Graphics settings, Unity switches from the built-in render pipeline to the URP. You can then adjust the corresponding settings directly in the URP, instead of looking for them elsewhere.
+The URP Asset controls several graphical features and quality settings for the Universal Render Pipeline. It is a scriptable object that inherits from ‘RenderPipelineAsset’. When you assign the asset in the Graphics settings, Unity switches from the built-in render pipeline to the URP. You can then adjust the corresponding settings directly in the URP, instead of looking for them elsewhere.
 
 You can have multiple URP assets and switch between them. For example, you can have one with Shadows on and one with Shadows off. If you switch between the assets to see the effects, you don’t have to manually toggle the corresponding settings for shadows every time. You cannot, however, switch between HDRP/SRP and URP assets, as the
  render pipelines are incompatible.
@@ -53,7 +53,6 @@ The __Rendering__ settings control the core part of the pipeline rendered frame.
 | __Debug Level__            | Set the level of debug information that the render pipeline generates. The values are:<br />**Disabled**:  Debugging is disabled. This is the default.<br  />**Profiling**: Makes the render pipeline provide detailed information tags, which you can see in the FrameDebugger. |
 | __Shader Variant Log Level__ | Set the level of information about Shader Stripping and Shader Variants you want to display when Unity finishes a build. Values are:<br /> **Disabled**: Unity doesn’t log anything.<br />**Only Universal**: Unity logs information for all of the [URP Shaders](shaders-in-universalrp.md).<br />**All**: Unity logs information for all Shaders in your build.<br /> You can see the information in Console panel when your build has finished. |
 | __Store Actions__          | Defines if Unity discards or stores the render targets of the DrawObjects Passes. Selecting the **Store** option significantly increases the memory bandwidth on mobile and tile-based GPUs.<br/>__Auto__: Unity uses the **Discard** option by default, and falls back to the **Store** option if it detects any injected Passes.<br/>__Discard__:  Unity discards the render targets of render Passes that are not reused later (lower memory bandwidth).<br/>__Store__: Unity stores all render targets of each Pass (higher memory bandwidth). |
-| __Debug Level__            | Set the level of debug information that the render pipeline generates. The values are:<br />**Disabled**:  Debugging is disabled. This is the default.<br  />**Profiling**: Makes the render pipeline provide detailed information tags, which you can see in the FrameDebugger. |
 
 
 
