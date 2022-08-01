@@ -1,0 +1,291 @@
+﻿#include "il2cpp-config.h"
+
+#ifndef _MSC_VER
+# include <alloca.h>
+#else
+# include <malloc.h>
+#endif
+
+
+
+#include "codegen/il2cpp-codegen-metadata.h"
+
+
+
+
+
+IL2CPP_EXTERN_C_BEGIN
+IL2CPP_EXTERN_C_END
+
+
+
+
+// 0x00000001 System.Void BallControl::Awake()
+extern void BallControl_Awake_m506EED86AEDC1584EF8F546B83B153E8C159F8F7 ();
+// 0x00000002 System.Void BallControl::Update()
+extern void BallControl_Update_m3C8804067D26C9B4C6A713E7D462225CFE0D0F59 ();
+// 0x00000003 System.Void BallControl::.ctor()
+extern void BallControl__ctor_m359B5D38FB00991D2896E1831A9604AE361F3F3F ();
+// 0x00000004 System.Void MainMenu::GameSelect()
+extern void MainMenu_GameSelect_mDA97E3F6CC73C447D8693FE4C346E07AD0684CB5 ();
+// 0x00000005 System.Void MainMenu::PlayFlappy()
+extern void MainMenu_PlayFlappy_mE5747ABE4E18A6CB2C281F43CC52B59F4C03F1F3 ();
+// 0x00000006 System.Void MainMenu::PlayNinja()
+extern void MainMenu_PlayNinja_m2F4F81AC7D8D672B0A7FFA91AB9747F4A81550DA ();
+// 0x00000007 System.Void MainMenu::QuitGame()
+extern void MainMenu_QuitGame_mE1E360893A560C1CD7A99D8B50129912D5D89703 ();
+// 0x00000008 System.Void MainMenu::.ctor()
+extern void MainMenu__ctor_mF17B753D99BD98B88E949A5B9CA53892E19A6CD5 ();
+// 0x00000009 System.Void Adtest::Update()
+extern void Adtest_Update_mA61E1D76E265BD649E04D9AF35103972959911E6 ();
+// 0x0000000A System.Void Adtest::.ctor()
+extern void Adtest__ctor_mBF9F3518BCF96FCC13742E99CCF432BBB0698A60 ();
+// 0x0000000B System.Void ClickToJump::Start()
+extern void ClickToJump_Start_m05A70EF5E55A4020CFC1A3942D97154FA8075FA2 ();
+// 0x0000000C System.Void ClickToJump::Update()
+extern void ClickToJump_Update_m92C841E20069D24C2951CE6621277A8C6B9E9765 ();
+// 0x0000000D System.Void ClickToJump::OnCollisionEnter2D(UnityEngine.Collision2D)
+extern void ClickToJump_OnCollisionEnter2D_m0707228A05617AAF4CB4FD767EFC817690336861 ();
+// 0x0000000E System.Void ClickToJump::.ctor()
+extern void ClickToJump__ctor_mF8E9048EFA3019F69CBF53C204D00CD37A8B3259 ();
+// 0x0000000F System.Void DelayedStartScript::Start()
+extern void DelayedStartScript_Start_m2F8BCB8DF29B7D476F7DB82C8AB7BB8F5B70BDDC ();
+// 0x00000010 System.Void DelayedStartScript::Update()
+extern void DelayedStartScript_Update_mC474BBF5AC3D3EBF3036691B504AED87067FD38E ();
+// 0x00000011 System.Collections.IEnumerator DelayedStartScript::StartDelay()
+extern void DelayedStartScript_StartDelay_m3F855625ED6DA91731D55ECB3AFAFA0507B9C48E ();
+// 0x00000012 System.Void DelayedStartScript::.ctor()
+extern void DelayedStartScript__ctor_m3AB099C6D37958C74BBAA265BFA5336455F219E7 ();
+// 0x00000013 System.Void FlappyStart::PlayGame()
+extern void FlappyStart_PlayGame_m343148C0D11174A35D5A13105FF317470BB5E841 ();
+// 0x00000014 System.Void FlappyStart::GoBack()
+extern void FlappyStart_GoBack_m824F03424B623065480A8E95018BBDF871C7AAC7 ();
+// 0x00000015 System.Void FlappyStart::QuitGame()
+extern void FlappyStart_QuitGame_mAF0581E71B42A210984B502B0E3447BBCF2ADF8F ();
+// 0x00000016 System.Void FlappyStart::.ctor()
+extern void FlappyStart__ctor_m89E520E2C3D4AB981B627016F5703D4A319C539F ();
+// 0x00000017 System.Void GameManager::Start()
+extern void GameManager_Start_mD77CCDBF1DA8EC5C3AE7ED955DE4E7F54B79C88E ();
+// 0x00000018 System.Void GameManager::GameOver()
+extern void GameManager_GameOver_m658E745BE197CC36CFAE422F8037F41A1B7FFFD3 ();
+// 0x00000019 System.Void GameManager::Replay()
+extern void GameManager_Replay_m5708C24AAB8FEEEFFE33E8D52EF9381088270486 ();
+// 0x0000001A System.Void GameManager::.ctor()
+extern void GameManager__ctor_mF7F1107D38DE91EB8A57C1C3BB1A932C50CD9693 ();
+// 0x0000001B System.Void Move::Start()
+extern void Move_Start_mAD8F588C41BC259F2A63F7FC45E2663A783B9393 ();
+// 0x0000001C System.Void Move::Update()
+extern void Move_Update_mB3F77296A3D662F72110C9C8470EB18831BBE9C0 ();
+// 0x0000001D System.Void Move::.ctor()
+extern void Move__ctor_mA29953F1D1A0B66A8300BCD7E59ABF35665B327E ();
+// 0x0000001E System.Void MoveSpike::Start()
+extern void MoveSpike_Start_mADDDCF93DB614AF859F3BF311FBD2A9D6B1DB9F2 ();
+// 0x0000001F System.Void MoveSpike::Update()
+extern void MoveSpike_Update_m1C354E2990A222CDAB798F48DC2DD506E17C8D17 ();
+// 0x00000020 System.Void MoveSpike::.ctor()
+extern void MoveSpike__ctor_m80BA1C7F370945D22D45638C07EBF57DE0001164 ();
+// 0x00000021 System.Void NinjaStart::PlayGame()
+extern void NinjaStart_PlayGame_mF23E78BB16057E0DF81912ED3C8C0F9B39B52324 ();
+// 0x00000022 System.Void NinjaStart::Menu()
+extern void NinjaStart_Menu_m7D881F872A7537AF9340459B05AC0C01C0032B27 ();
+// 0x00000023 System.Void NinjaStart::GoBack()
+extern void NinjaStart_GoBack_mC7BC0053074B9007A6BE8144E32E05CAF2F338A8 ();
+// 0x00000024 System.Void NinjaStart::QuitGame()
+extern void NinjaStart_QuitGame_m21ECCC849D18809A103619BB56774A8C26B3AE48 ();
+// 0x00000025 System.Void NinjaStart::.ctor()
+extern void NinjaStart__ctor_m8BA20BFB08DD107AE476E2F60AD31BB4C1A41816 ();
+// 0x00000026 System.Void Score::Start()
+extern void Score_Start_m1821AC2C6C0505E9EEFA5DD52733BE5C3037AD9E ();
+// 0x00000027 System.Void Score::Update()
+extern void Score_Update_m034295E32383253E391ECFA2599FD3720345D1DB ();
+// 0x00000028 System.Void Score::.ctor()
+extern void Score__ctor_mE2F9D741565800994F2DFAF0C4036F5E7ADA4D1F ();
+// 0x00000029 System.Void Score::.cctor()
+extern void Score__cctor_m0E60F88B5FE176BC9E1031CD99E6FC8A7F8B1D0B ();
+// 0x0000002A System.Void Spawner::Start()
+extern void Spawner_Start_mEA70C3EA61603E141DD386EC98864D2A80917900 ();
+// 0x0000002B System.Void Spawner::Update()
+extern void Spawner_Update_mBBD680767D87C19E6B68AF774A049579F270A44E ();
+// 0x0000002C System.Void Spawner::.ctor()
+extern void Spawner__ctor_mA37BC0F6624E147B76FC192F6E53162998BCA0A5 ();
+// 0x0000002D System.Void SpikeScript::Start()
+extern void SpikeScript_Start_m20CE4F7D8F1E4F9BF0EE6FDEA1F073F1C8FF2DF9 ();
+// 0x0000002E System.Void SpikeScript::Update()
+extern void SpikeScript_Update_m7CC704BEE1A293878A4AC228EAE59E0F89F40053 ();
+// 0x0000002F System.Void SpikeScript::.ctor()
+extern void SpikeScript__ctor_m5E3812F91A3A17C22815085962E44E7A15C5D26D ();
+// 0x00000030 System.Void addscore::OnTriggerEnter2D(UnityEngine.Collider2D)
+extern void addscore_OnTriggerEnter2D_m0B0FD5F122F15CA8A2A423C774FA64B1AE46B407 ();
+// 0x00000031 System.Void addscore::.ctor()
+extern void addscore__ctor_mFF91ECEBF52575C1DEACA7F56A1E9C64AC0EC119 ();
+// 0x00000032 System.Void Sound_Script::Start()
+extern void Sound_Script_Start_m4189895664E7A25A72309065173DDBD5FDA256C8 ();
+// 0x00000033 System.Void Sound_Script::Update()
+extern void Sound_Script_Update_mB9A9CDD00385809EE9CF299396F0D992059E2E28 ();
+// 0x00000034 System.Void Sound_Script::PlaySound(System.String)
+extern void Sound_Script_PlaySound_mD8B31E99ED2221A393C8F7B0FD714543783925CA ();
+// 0x00000035 System.Void Sound_Script::.ctor()
+extern void Sound_Script__ctor_m02761C8340A2F59FCCB722FC58A59268863D42CB ();
+// 0x00000036 System.Void Spike::OnCollisionEnter2D(UnityEngine.Collision2D)
+extern void Spike_OnCollisionEnter2D_m19F91590C5E2E44AF9103AECA04DFDC99187527A ();
+// 0x00000037 System.Void Spike::OnTriggerEnter2D(UnityEngine.Collider2D)
+extern void Spike_OnTriggerEnter2D_mC0894BF04D81CE3EF3E11DAD2CDDBB2AD2071080 ();
+// 0x00000038 System.Void Spike::.ctor()
+extern void Spike__ctor_mCCF018BA6DDAC597B6CB0BF684DAE957D940908A ();
+// 0x00000039 System.Void DelayedStartScript_<StartDelay>d__3::.ctor(System.Int32)
+extern void U3CStartDelayU3Ed__3__ctor_m1A2B63742AD9DF0FA1364C241436A130EED6232F ();
+// 0x0000003A System.Void DelayedStartScript_<StartDelay>d__3::System.IDisposable.Dispose()
+extern void U3CStartDelayU3Ed__3_System_IDisposable_Dispose_m8AC765C4691F2EDBB48B416C84A279F93246E662 ();
+// 0x0000003B System.Boolean DelayedStartScript_<StartDelay>d__3::MoveNext()
+extern void U3CStartDelayU3Ed__3_MoveNext_mCDC17BEB2E6CB080432D7F8CEF74B39F1D4FDD86 ();
+// 0x0000003C System.Object DelayedStartScript_<StartDelay>d__3::System.Collections.Generic.IEnumerator<System.Object>.get_Current()
+extern void U3CStartDelayU3Ed__3_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m9853C07B56E7132E54EA5BB653CB4A0DA228B9B8 ();
+// 0x0000003D System.Void DelayedStartScript_<StartDelay>d__3::System.Collections.IEnumerator.Reset()
+extern void U3CStartDelayU3Ed__3_System_Collections_IEnumerator_Reset_mB7A8AFA136BA5B3B5BF277994528BE834616D794 ();
+// 0x0000003E System.Object DelayedStartScript_<StartDelay>d__3::System.Collections.IEnumerator.get_Current()
+extern void U3CStartDelayU3Ed__3_System_Collections_IEnumerator_get_Current_mB5A1660ABFA3B88D8D11EA3794A9D694EDCE45C2 ();
+static Il2CppMethodPointer s_methodPointers[62] = 
+{
+	BallControl_Awake_m506EED86AEDC1584EF8F546B83B153E8C159F8F7,
+	BallControl_Update_m3C8804067D26C9B4C6A713E7D462225CFE0D0F59,
+	BallControl__ctor_m359B5D38FB00991D2896E1831A9604AE361F3F3F,
+	MainMenu_GameSelect_mDA97E3F6CC73C447D8693FE4C346E07AD0684CB5,
+	MainMenu_PlayFlappy_mE5747ABE4E18A6CB2C281F43CC52B59F4C03F1F3,
+	MainMenu_PlayNinja_m2F4F81AC7D8D672B0A7FFA91AB9747F4A81550DA,
+	MainMenu_QuitGame_mE1E360893A560C1CD7A99D8B50129912D5D89703,
+	MainMenu__ctor_mF17B753D99BD98B88E949A5B9CA53892E19A6CD5,
+	Adtest_Update_mA61E1D76E265BD649E04D9AF35103972959911E6,
+	Adtest__ctor_mBF9F3518BCF96FCC13742E99CCF432BBB0698A60,
+	ClickToJump_Start_m05A70EF5E55A4020CFC1A3942D97154FA8075FA2,
+	ClickToJump_Update_m92C841E20069D24C2951CE6621277A8C6B9E9765,
+	ClickToJump_OnCollisionEnter2D_m0707228A05617AAF4CB4FD767EFC817690336861,
+	ClickToJump__ctor_mF8E9048EFA3019F69CBF53C204D00CD37A8B3259,
+	DelayedStartScript_Start_m2F8BCB8DF29B7D476F7DB82C8AB7BB8F5B70BDDC,
+	DelayedStartScript_Update_mC474BBF5AC3D3EBF3036691B504AED87067FD38E,
+	DelayedStartScript_StartDelay_m3F855625ED6DA91731D55ECB3AFAFA0507B9C48E,
+	DelayedStartScript__ctor_m3AB099C6D37958C74BBAA265BFA5336455F219E7,
+	FlappyStart_PlayGame_m343148C0D11174A35D5A13105FF317470BB5E841,
+	FlappyStart_GoBack_m824F03424B623065480A8E95018BBDF871C7AAC7,
+	FlappyStart_QuitGame_mAF0581E71B42A210984B502B0E3447BBCF2ADF8F,
+	FlappyStart__ctor_m89E520E2C3D4AB981B627016F5703D4A319C539F,
+	GameManager_Start_mD77CCDBF1DA8EC5C3AE7ED955DE4E7F54B79C88E,
+	GameManager_GameOver_m658E745BE197CC36CFAE422F8037F41A1B7FFFD3,
+	GameManager_Replay_m5708C24AAB8FEEEFFE33E8D52EF9381088270486,
+	GameManager__ctor_mF7F1107D38DE91EB8A57C1C3BB1A932C50CD9693,
+	Move_Start_mAD8F588C41BC259F2A63F7FC45E2663A783B9393,
+	Move_Update_mB3F77296A3D662F72110C9C8470EB18831BBE9C0,
+	Move__ctor_mA29953F1D1A0B66A8300BCD7E59ABF35665B327E,
+	MoveSpike_Start_mADDDCF93DB614AF859F3BF311FBD2A9D6B1DB9F2,
+	MoveSpike_Update_m1C354E2990A222CDAB798F48DC2DD506E17C8D17,
+	MoveSpike__ctor_m80BA1C7F370945D22D45638C07EBF57DE0001164,
+	NinjaStart_PlayGame_mF23E78BB16057E0DF81912ED3C8C0F9B39B52324,
+	NinjaStart_Menu_m7D881F872A7537AF9340459B05AC0C01C0032B27,
+	NinjaStart_GoBack_mC7BC0053074B9007A6BE8144E32E05CAF2F338A8,
+	NinjaStart_QuitGame_m21ECCC849D18809A103619BB56774A8C26B3AE48,
+	NinjaStart__ctor_m8BA20BFB08DD107AE476E2F60AD31BB4C1A41816,
+	Score_Start_m1821AC2C6C0505E9EEFA5DD52733BE5C3037AD9E,
+	Score_Update_m034295E32383253E391ECFA2599FD3720345D1DB,
+	Score__ctor_mE2F9D741565800994F2DFAF0C4036F5E7ADA4D1F,
+	Score__cctor_m0E60F88B5FE176BC9E1031CD99E6FC8A7F8B1D0B,
+	Spawner_Start_mEA70C3EA61603E141DD386EC98864D2A80917900,
+	Spawner_Update_mBBD680767D87C19E6B68AF774A049579F270A44E,
+	Spawner__ctor_mA37BC0F6624E147B76FC192F6E53162998BCA0A5,
+	SpikeScript_Start_m20CE4F7D8F1E4F9BF0EE6FDEA1F073F1C8FF2DF9,
+	SpikeScript_Update_m7CC704BEE1A293878A4AC228EAE59E0F89F40053,
+	SpikeScript__ctor_m5E3812F91A3A17C22815085962E44E7A15C5D26D,
+	addscore_OnTriggerEnter2D_m0B0FD5F122F15CA8A2A423C774FA64B1AE46B407,
+	addscore__ctor_mFF91ECEBF52575C1DEACA7F56A1E9C64AC0EC119,
+	Sound_Script_Start_m4189895664E7A25A72309065173DDBD5FDA256C8,
+	Sound_Script_Update_mB9A9CDD00385809EE9CF299396F0D992059E2E28,
+	Sound_Script_PlaySound_mD8B31E99ED2221A393C8F7B0FD714543783925CA,
+	Sound_Script__ctor_m02761C8340A2F59FCCB722FC58A59268863D42CB,
+	Spike_OnCollisionEnter2D_m19F91590C5E2E44AF9103AECA04DFDC99187527A,
+	Spike_OnTriggerEnter2D_mC0894BF04D81CE3EF3E11DAD2CDDBB2AD2071080,
+	Spike__ctor_mCCF018BA6DDAC597B6CB0BF684DAE957D940908A,
+	U3CStartDelayU3Ed__3__ctor_m1A2B63742AD9DF0FA1364C241436A130EED6232F,
+	U3CStartDelayU3Ed__3_System_IDisposable_Dispose_m8AC765C4691F2EDBB48B416C84A279F93246E662,
+	U3CStartDelayU3Ed__3_MoveNext_mCDC17BEB2E6CB080432D7F8CEF74B39F1D4FDD86,
+	U3CStartDelayU3Ed__3_System_Collections_Generic_IEnumeratorU3CSystem_ObjectU3E_get_Current_m9853C07B56E7132E54EA5BB653CB4A0DA228B9B8,
+	U3CStartDelayU3Ed__3_System_Collections_IEnumerator_Reset_mB7A8AFA136BA5B3B5BF277994528BE834616D794,
+	U3CStartDelayU3Ed__3_System_Collections_IEnumerator_get_Current_mB5A1660ABFA3B88D8D11EA3794A9D694EDCE45C2,
+};
+static const int32_t s_InvokerIndices[62] = 
+{
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	26,
+	23,
+	23,
+	23,
+	14,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	3,
+	23,
+	23,
+	23,
+	23,
+	23,
+	23,
+	26,
+	23,
+	23,
+	23,
+	111,
+	23,
+	26,
+	26,
+	23,
+	32,
+	23,
+	102,
+	14,
+	23,
+	14,
+};
+extern const Il2CppCodeGenModule g_AssemblyU2DCSharpCodeGenModule;
+const Il2CppCodeGenModule g_AssemblyU2DCSharpCodeGenModule = 
+{
+	"Assembly-CSharp.dll",
+	62,
+	s_methodPointers,
+	s_InvokerIndices,
+	0,
+	NULL,
+	0,
+	NULL,
+	0,
+	NULL,
+	NULL,
+};
