@@ -122,7 +122,5 @@ llvm-lipo filter=lfs diff=lfs merge=lfs -text
 dsymutil filter=lfs diff=lfs merge=lfs -text
 hostmac/* filter=lfs diff=lfs merge=lfs -text
 PackageCache/* filter=lfs diff=lfs merge=lfs -text
-Game Stack/Library/PackageCache/com.unity.burst@1.6.5/.Runtime/hostmac/lld
-Game Stack/ios build/Libraries/libiPhone-lib.a
 Game[[:space:]]Stack/Library/PackageCache/com.unity.burst@1.6.5/.Runtime/hostmac/* filter=lfs diff=lfs merge=lfs -text
 Game[[:space:]]Stack/ios[[:space:]]build/Libraries/* filter=lfs diff=lfs merge=lfs -text
