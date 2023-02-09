@@ -1,17 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
     [SerializeField]
     InputManager inputManager;
-    public float moveSpeed = 5f;
-    public float turnSpeed = 1f;
-    public float jumpForce = 5f;
-
     private bool isJumping;
     private Rigidbody rb;
+
+
+
+    public float xForce = 10.0f;  
+    public float zForce = 10.0f;  
+    public float yForce = 500.0f; 
 
     void Start()
     {
@@ -21,15 +24,29 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        // float horizontal = Input.GetAxis("Horizontal");
-        // float vertical = Input.GetAxis("Vertical");
+        //move forward
+        float x= 0.0f;
+        x = -inputManager.movementInput.y;
+        //move sides
+        float z= 0.0f;
+        z = inputManager.movementInput.x;
+        //jump force
+        float y= 0.0f;
+        if (inputManager.playerControls.CharacterControls.Jump.triggered)
+        {
+          y = yForce;
+          GetComponent<Rigidbody>().AddForce (x, y, z);   
+        }
 
-        // move forward/backward
-        transform.position += transform.forward * inputManager.movementInput.y * moveSpeed * Time.deltaTime;
-        // rotate left/right
-        transform.Rotate(Vector3.up, inputManager.movementInput.x * turnSpeed);
+        //ads force from values above
+        GetComponent<Rigidbody>().AddForce (x, y, z);   
+        
+
+
       
     }
+
+
 
     void OnCollisionEnter(Collision collision)
     {
