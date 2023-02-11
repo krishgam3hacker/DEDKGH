@@ -41,7 +41,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""type"": ""Value"",
                     ""id"": ""753819b3-d336-4688-97df-058413455b63"",
                     ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
+                    ""processors"": ""InvertVector2,NormalizeVector2"",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
