@@ -11,6 +11,8 @@ public class RollingBall2 : MonoBehaviour
     private PlayerInputActions inputActions;
     private Transform mainCameraTransform;
 
+    private bool isGroundedBall;
+
     public float yForce = 500.0f; 
 
     void Awake()
@@ -34,39 +36,91 @@ public class RollingBall2 : MonoBehaviour
         mainCameraTransform = Camera.main.transform;
     }
 
+
+
+private void OnCollisionEnter(Collision col)
+{
+    if (col.gameObject.tag == "Ground")
+    {
+        isGroundedBall = true;
+        Debug.Log("collided");
+    }
+}
+
+private void OnCollisionExit(Collision col)
+{
+    if (col.gameObject.tag == "Ground")
+    {
+        isGroundedBall = false;
+    }
+}
+
+
     void Update()
     {
         Vector2 direction = inputActions.CharacterControls.Movement.ReadValue<Vector2>();
         MoveBall(direction);
+        JumpCheck();
 
-        float x= 0.0f;
-        float y= 0.0f;
-        float z= 0.0f;
-        if (inputActions.CharacterControls.Jump.triggered)
-        {
-          y = yForce;
-          GetComponent<Rigidbody>().AddForce (x, y, z);   
-        }
+
+
+
     }
 
-    private void MoveBall(Vector2 direction)
+private void MoveBall(Vector2 direction)
+{
+    if (direction.magnitude > 0)
     {
-        if (direction.magnitude > 0)
+        if (!isGroundedBall)
         {
-            Vector3 moveDirection = new Vector3(direction.x, rb.velocity.y*2, direction.y);
+           // Debug.Log("Inair");
+            // add air control
 
-            // Rotate the direction vector to match the forward direction of the camera
-            moveDirection = mainCameraTransform.TransformDirection(moveDirection);
-            moveDirection.y = 0;
-            moveDirection = moveDirection.normalized;
 
-            // Move the ball in the direction
-            rb.AddForce(moveDirection * speed);
+            //to add air resistance
+            rb.AddForce(-rb.velocity.x * drag/2, 0, -rb.velocity.z * drag/2);
+            //return;
         }
         else
         {
-            // Apply drag force to slow the ball down
-            rb.AddForce(-rb.velocity * drag);
+            Vector3 moveDirection = new Vector3(direction.x, 0, direction.y);
+
+            // Rotate the direction vector to match the forward direction of the camera
+            moveDirection = mainCameraTransform.TransformDirection(moveDirection);
+            moveDirection.y = rb.velocity.y;
+            moveDirection = moveDirection.normalized;
+
+            // Move the ball in the direction
+            rb.AddForce(moveDirection.x * speed,0,moveDirection.z * speed);
         }
+
     }
+    else
+    {
+        // Apply drag force to slow the ball down
+        rb.AddForce(-rb.velocity.x * drag, -speed, -rb.velocity.z * drag);
+    }
+}
+
+private void JumpCheck()
+{
+//check if player is jumping
+        if (inputActions.CharacterControls.Jump.triggered)
+         {
+            if(isGroundedBall)
+            {
+
+              Vector3 jumpDirection = rb.velocity.normalized;
+              jumpDirection.y = yForce;
+              GetComponent<Rigidbody>().AddForce(jumpDirection);   
+            }
+            else
+            {
+                return;
+            }
+         }
+
+}
+
+
 }
