@@ -434,7 +434,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 358679819}
-  m_LocalRotation: {x: 0.14491855, y: -0.69209754, z: 0.14491867, w: 0.69209695}
+  m_LocalRotation: {x: 0.14491853, y: -0.69209754, z: 0.14491865, w: 0.69209695}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -626,6 +626,11 @@ MonoBehaviour:
   speed: 8
   drag: 2.5
   yForce: 500
+  raycastLength: 1
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  raycastStart: {fileID: 413083390}
 --- !u!1 &485747222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,7 +1129,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 961739749}
-  m_LocalRotation: {x: 0.14491862, y: -0.6920972, z: 0.1449186, w: 0.6920973}
+  m_LocalRotation: {x: 0.14491859, y: -0.69209725, z: 0.14491859, w: 0.69209737}
   m_LocalPosition: {x: 21.529182, y: 4.1099997, z: 0.3207281}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2083,7 +2088,7 @@ GameObject:
   - component: {fileID: 3137056990927735968}
   - component: {fileID: 7051107876019530649}
   - component: {fileID: 8824316749939912173}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: polySurface5
   m_TagString: Ground
   m_Icon: {fileID: 0}
