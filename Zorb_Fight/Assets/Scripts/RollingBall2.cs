@@ -19,15 +19,21 @@ public class RollingBall2 : MonoBehaviour
     #region GroundCheck
     [Header("Ground Check")]
     public float raycastLength = 1f;
-    public LayerMask groundLayers;
+    [SerializeField] private string groundTag = "Ground";
     private bool isGroundedBall;
     public Transform raycastStart;
+
+    // Directions to check for ground
+    public Vector3[] groundCheckDirections = { Vector3.down, Vector3.up, Vector3.left, Vector3.right, Vector3.forward, Vector3.back }; 
+
     #endregion
 
 
     void Awake()
     {
         inputActions = new PlayerInputActions();
+        rb = GetComponent<Rigidbody>();
+        mainCameraTransform = Camera.main.transform;
     }
 
     void OnEnable()
@@ -40,23 +46,16 @@ public class RollingBall2 : MonoBehaviour
         inputActions.Disable();
     }
 
-    void Start()
-    {
-        rb = GetComponent<Rigidbody>();
-        mainCameraTransform = Camera.main.transform;
-    }
-
-
     void Update()
-    {
-        Vector2 direction = inputActions.CharacterControls.Movement.ReadValue<Vector2>();
-        MoveBall(direction);
+    {       
         JumpCheck();
         GroundCheck();
+    }
 
-
-
-
+    void FixedUpdate()
+    {
+        Vector2 direction = inputActions.CharacterControls.Movement.ReadValue<Vector2>();
+         MoveBall(direction);
     }
 
 private void MoveBall(Vector2 direction)
@@ -100,6 +99,9 @@ private void MoveBall(Vector2 direction)
         // Apply drag force to slow the ball down
         rb.AddForce(-rb.velocity.x * drag, -speed, -rb.velocity.z * drag);
     }
+
+        // Apply force once per fixed update
+    rb.AddForce(0, Physics.gravity.y * rb.mass, 0, ForceMode.Force);
 }
 
 private void JumpCheck()
@@ -121,27 +123,43 @@ private void JumpCheck()
          }
 
 }
-
-
-
-// to add more raycasts on side
 private void GroundCheck()
 {
- Debug.DrawRay(raycastStart.position, -Vector3.up * raycastLength, Color.red);
+    // use the radius of the sphere collider on the ball
+    float radius = GetComponent<SphereCollider>().radius; 
+    Vector3 position = transform.position;
+    
+    bool isGrounded = false;
+    for (int i = 0; i < groundCheckDirections.Length; i++)
+    {
+        Vector3 direction = transform.TransformDirection(groundCheckDirections[i]);
         RaycastHit hitInfo;
-        if (Physics.Raycast(raycastStart.position, -Vector3.up, out hitInfo, raycastLength, groundLayers))
+        if (Physics.SphereCast(position, radius, direction, out hitInfo, raycastLength))
         {
+            Debug.DrawRay(position, direction * hitInfo.distance, Color.red);
             Debug.Log("Ground hit: " + hitInfo.collider.gameObject.name);
-            isGroundedBall = true;
-
+            
+            // Check if the ground object has the specified tag
+            if (hitInfo.collider.gameObject.CompareTag(groundTag))
+            {
+                isGrounded = true;
+                break;
+            }
         }
-        else
-        {
-            Debug.Log("No ground hit");
-            isGroundedBall = false;
-
-        }
+    }
+ 
+    if (isGrounded)
+    {
+        isGroundedBall = true;
+    }
+    else
+    {
+        isGroundedBall = false;
+    }
 }
+
+
+
 
 
 }
