@@ -137,7 +137,7 @@ private void GroundCheck()
         if (Physics.SphereCast(position, radius, direction, out hitInfo, raycastLength))
         {
             Debug.DrawRay(position, direction * hitInfo.distance, Color.red);
-            Debug.Log("Ground hit: " + hitInfo.collider.gameObject.name);
+           // Debug.Log("Ground hit: " + hitInfo.collider.gameObject.name);
             
             // Check if the ground object has the specified tag
             if (hitInfo.collider.gameObject.CompareTag(groundTag))
