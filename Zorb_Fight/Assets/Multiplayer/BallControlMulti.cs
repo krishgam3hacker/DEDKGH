@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
+using Unity.Netcode.Components;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
-public class RollingBall : NetworkBehaviour
+public class BallControlMulti : NetworkBehaviour
 {
-    [SerializeField] private GameObject CamObject;
+    
 
     private Rigidbody rb;
     private PlayerInputActions inputActions;
@@ -33,11 +33,21 @@ public class RollingBall : NetworkBehaviour
     #endregion
 
 
+    private NetworkTransform networkTransform;
+
     void Awake()
     {
         inputActions = new PlayerInputActions();
         rb = GetComponent<Rigidbody>();
         mainCameraTransform = Camera.main.transform;
+
+        // Get the NetworkTransform component on the RollingBall object
+         networkTransform = GetComponent<NetworkTransform>();
+    }
+
+    private void Start()
+    {
+
     }
 
     void OnEnable()
@@ -57,11 +67,6 @@ public class RollingBall : NetworkBehaviour
         GroundCheck();
         Vector2 direction = inputActions.CharacterControls.Movement.ReadValue<Vector2>();
          MoveBall(direction);
-
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            Instantiate(CamObject);
-        }
     }
 
     void FixedUpdate()
