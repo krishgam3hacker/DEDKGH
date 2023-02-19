@@ -7,11 +7,32 @@ using QFSW.QC;
 public class MultiCamController : NetworkBehaviour
 {
     public CinemachineFreeLook freelookCam;
+    public GameObject cam;
     public float cameraHeight = 10f;
     public float cameraDistance = 20f;
 
+    private void Start()
+    {
+        CamFind();
+            
+        PlayerFind();
+  
+    }
+
+
     [Command]
-    public void CamFind()
+    private void CamFind()
+    {
+        if (freelookCam == null)
+        {
+            cam = GameObject.FindWithTag("CM");
+        }
+        freelookCam = cam.GetComponent< CinemachineFreeLook>();
+    }
+
+
+    [Command]
+    public void PlayerFind()
     {
 
       
@@ -23,13 +44,14 @@ public class MultiCamController : NetworkBehaviour
             Debug.Log("player found");
             // Set the camera's follow target to the player object
             freelookCam.Follow = player.transform;
-                freelookCam.LookAt = player.transform;
+            freelookCam.LookAt = player.transform;
 
-                // Set the camera's height and distance from the player
-                //Vector3 cameraOffset = new Vector3(0f, cameraHeight, -cameraDistance);
-                //freelookCam.transform.position = player.transform.position + cameraOffset;
+             
             }
-        Debug.Log("player nada");
+            else
+            {
+                Debug.Log("player nada");
+            }
 
     }
 }

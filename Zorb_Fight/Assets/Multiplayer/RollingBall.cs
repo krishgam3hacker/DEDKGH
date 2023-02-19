@@ -7,7 +7,9 @@ using UnityEngine.InputSystem;
 
 public class RollingBall : NetworkBehaviour
 {
-    [SerializeField] private GameObject CamObject;
+    [SerializeField] private Transform spawnedObjectPrefab;
+
+    private Transform spawnedObjectTransform;
 
     private Rigidbody rb;
     private PlayerInputActions inputActions;
@@ -60,7 +62,10 @@ public class RollingBall : NetworkBehaviour
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            Instantiate(CamObject);
+            TestClientRpc();
+           spawnedObjectTransform = Instantiate(spawnedObjectPrefab);
+            spawnedObjectTransform.GetComponent<NetworkObject>().Spawn(true);
+
         }
     }
 
@@ -172,7 +177,31 @@ private void GroundCheck()
 }
 
 
+    [ClientRpc]
+    private void TestClientRpc()
+    {
+        Debug.Log("Testclientrpc");
+    }
 
+    [SerializeField] private float forceMultiplier = 1.1f;
 
+    [ClientRpc]
+    void HandleCollisionClientRpc(Vector3 impulse)
+    {
+        // Handle collision on all clients
+        Vector3 force = impulse * forceMultiplier;
+        rb.AddForce(force, ForceMode.Impulse);
+    }
 
+  
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            Vector3 impulse = collision.impulse;
+            HandleCollisionClientRpc(impulse);
+        }
+    }
+
+  
 }
