@@ -7,10 +7,6 @@ using UnityEngine.InputSystem;
 
 public class RollingBall : NetworkBehaviour
 {
-    [SerializeField] private Transform spawnedObjectPrefab;
-
-    private Transform spawnedObjectTransform;
-
     private Rigidbody rb;
     private PlayerInputActions inputActions;
     private Transform mainCameraTransform;
@@ -42,6 +38,11 @@ public class RollingBall : NetworkBehaviour
         mainCameraTransform = Camera.main.transform;
     }
 
+    private void Start()
+    {
+        rb.isKinematic = false;
+    }
+
     void OnEnable()
     {
         inputActions.Enable();
@@ -60,13 +61,7 @@ public class RollingBall : NetworkBehaviour
         Vector2 direction = inputActions.CharacterControls.Movement.ReadValue<Vector2>();
          MoveBall(direction);
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            TestClientRpc();
-           spawnedObjectTransform = Instantiate(spawnedObjectPrefab);
-            spawnedObjectTransform.GetComponent<NetworkObject>().Spawn(true);
 
-        }
     }
 
     void FixedUpdate()

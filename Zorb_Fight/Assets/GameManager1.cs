@@ -6,7 +6,7 @@ public class GameManager1 : MonoBehaviour
 {
 
     [SerializeField]
-    int fps = 60;
+    int fps = 70;
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +17,6 @@ public class GameManager1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Application.targetFrameRate = fps;
+        
     }
 }
