@@ -34,7 +34,10 @@ public class RollingBall2 : MonoBehaviour
         inputActions = new PlayerInputActions();
         rb = GetComponent<Rigidbody>();
         mainCameraTransform = Camera.main.transform;
+        //Set Cursor to not be visible
+        Cursor.visible = false;
     }
+
 
     void OnEnable()
     {
