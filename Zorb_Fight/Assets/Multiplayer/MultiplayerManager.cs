@@ -9,30 +9,84 @@ using Unity.Services.Relay;
 using Unity.Services.Core;
 using Unity.Services.Authentication;
 using System;
+using Unity.Services.Relay.Models;
+using Unity.Netcode.Transports.UTP;
+using System.Threading.Tasks;
+using Unity.Networking.Transport.Relay;
 
-public class MultiplayerManager : NetworkBehaviour
+public class MultiplayerManager : MonoBehaviour
 {
-    // Event that is triggered when a new client connects to the server
-    public UnityEvent onPlayerConnect;
+    public static MultiplayerManager Instance { get; private set; }
+
 
     [SerializeField] private Transform spawnedObjectPrefab;
     private Transform spawnedObjectTransform;
     [SerializeField] private Transform spawnLocation;
 
+    [SerializeField] private int MaxConnections = 2;
+
     //autheticates player
-    async void Example_AuthenticatingAPlayer()
+    private  void Awake()
+    {
+        Instance = this;
+        
+    }
+
+    [Command]
+    public async Task<string> CreateRelay()
     {
         try
         {
-            await UnityServices.InitializeAsync();
-            await AuthenticationService.Instance.SignInAnonymouslyAsync();
-            var playerID = AuthenticationService.Instance.PlayerId;
+        Allocation allocation = await RelayService.Instance.CreateAllocationAsync(MaxConnections);
+
+          string joinCode = await  RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
+
+            Debug.Log(joinCode);
+            //sets data for relay
+            RelayServerData relayServerData = new RelayServerData(allocation, "dtls");
+
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
+            //starts host
+            NetworkManager.Singleton.StartHost();
+
+            return joinCode;
+
+        } catch (RelayServiceException e)
+        {
+            Debug.Log(e);
+            return null;
         }
-        catch (Exception e)
+
+    }
+
+    [Command]
+    public async void JoinRelay(string joinCode)
+    {
+        try
+        {
+            Debug.Log("Joining Relay with" + joinCode);
+
+          JoinAllocation joinAllocation =  await RelayService.Instance.JoinAllocationAsync(joinCode);
+
+            RelayServerData relayServerData = new RelayServerData(joinAllocation, "dtls");
+
+
+            NetworkManager.Singleton.GetComponent<UnityTransport>().SetRelayServerData(relayServerData);
+
+            NetworkManager.Singleton.StartClient();
+
+           
+
+    } catch (RelayServiceException e)
         {
             Debug.Log(e);
         }
-    }
+    } 
+
+
+
+
+
 
     [Command]
     void SpawnGoali()

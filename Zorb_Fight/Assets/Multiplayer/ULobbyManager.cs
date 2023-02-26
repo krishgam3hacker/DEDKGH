@@ -7,7 +7,7 @@ using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using QFSW.QC;
 
-public class test_lobby : MonoBehaviour
+public class ULobbyManager : MonoBehaviour
 {
     private Lobby hostLobby;
     private Lobby joinedLobby;
