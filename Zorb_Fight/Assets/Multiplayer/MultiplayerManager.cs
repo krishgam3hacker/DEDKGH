@@ -13,15 +13,17 @@ using Unity.Services.Relay.Models;
 using Unity.Netcode.Transports.UTP;
 using System.Threading.Tasks;
 using Unity.Networking.Transport.Relay;
+using Unity.Services.Lobbies.Models;
 
 public class MultiplayerManager : MonoBehaviour
 {
     public static MultiplayerManager Instance { get; private set; }
 
+    public GameObject playerPrefab;
 
     [SerializeField] private Transform spawnedObjectPrefab;
     private Transform spawnedObjectTransform;
-    [SerializeField] private Transform spawnLocation;
+   // [SerializeField] private Transform spawnLocation;
 
     [SerializeField] private int MaxConnections = 2;
 
@@ -81,15 +83,39 @@ public class MultiplayerManager : MonoBehaviour
         {
             Debug.Log(e);
         }
-    } 
+    }
+
+    public void SpawnPlayers()
+    {
+        if (NetworkManager.Singleton.ConnectedClients.Count == 0)
+        {
+            Debug.LogWarning("No connected clients");
+            return;
+        }
+
+        foreach (var client in NetworkManager.Singleton.ConnectedClients)
+        {
+            var player = Instantiate(playerPrefab);
+            ulong playerId = ulong.Parse(AuthenticationService.Instance.PlayerId);
+            player.GetComponent<NetworkObject>().SpawnAsPlayerObject(playerId);
+
+            //needs to spawn in network for control
+            //player.GetComponent<NetworkObject>().Spawn(true);
+           
+        }
+    }
 
 
-
+    public void GetControl()
+    {
+        
+        //player.GetComponent<NetworkObject>().Spawn(true);
+    }
 
 
 
     [Command]
-    void SpawnGoali()
+    public void SpawnGoali(Transform spawnLocation)
     {
         spawnedObjectTransform = Instantiate(spawnedObjectPrefab, spawnLocation);
         spawnedObjectTransform.GetComponent<NetworkObject>().Spawn(true);

@@ -7,6 +7,8 @@ using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using UnityEngine;
 using QFSW.QC;
+using Unity.Multiplayer.Samples.Utilities;
+using Unity.Netcode;
 
 public class LobbyManager : MonoBehaviour
 {
@@ -164,7 +166,7 @@ public class LobbyManager : MonoBehaviour
                     //OnGameStarted?.Invoke(this, EventArgs.Empty);
                     OnGameStarted?.Invoke(this, new LobbyManager.LobbyEventArgs());
                 }
-            
+
             }
         }
     }
@@ -452,19 +454,33 @@ public class LobbyManager : MonoBehaviour
 
                 string relayCode = await MultiplayerManager.Instance.CreateRelay();
 
-                
+
 
                 Lobby lobby = await Lobbies.Instance.UpdateLobbyAsync(joinedLobby.Id, new UpdateLobbyOptions
-                    {
+                {
                     Data = new Dictionary<string, DataObject> {
                         {KEY_START_GAME, new DataObject(DataObject.VisibilityOptions.Member, relayCode) }
                     }
-                    });
+                });
 
                 joinedLobby = lobby;
+
+                // Switch to game scene
+                await NetworkSceneManager.LoadSceneAsync("MainGame");
             }
             catch (LobbyServiceException e) { Debug.Log(e); }
         }
+
+    }
+
+
+
+
+    // Inside the OnGameStarted event handler in LobbyManager
+
+    private async void HandleGameStarted(object sender, LobbyEventArgs e)
+    {
+        MultiplayerManager.Instance.SpawnPlayers();
 
     }
 }

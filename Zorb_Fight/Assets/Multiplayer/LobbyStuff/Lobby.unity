@@ -7338,7 +7338,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1861923468}
-  - component: {fileID: 1861923467}
   - component: {fileID: 1861923466}
   - component: {fileID: 1861923465}
   m_Layer: 0
@@ -7376,23 +7375,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c5069131b4323941913ee0adba5cc09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerPrefab: {fileID: 7359264167656165141, guid: 80ee95ccc6f35ae4dbf202b30895310f,
+    type: 3}
   spawnedObjectPrefab: {fileID: 1138226611601956007, guid: 00ccec347eb23514ea25294eaf774909,
     type: 3}
   spawnLocation: {fileID: 0}
   MaxConnections: 2
---- !u!114 &1861923467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1861923464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00839ea45ee2f9e4cbb94f5652fc093e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fps: 60
 --- !u!4 &1861923468
 Transform:
   m_ObjectHideFlags: 0
