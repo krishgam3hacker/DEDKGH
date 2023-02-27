@@ -1,5 +1,8 @@
+using QFSW.QC;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
+using Unity.Services.Lobbies.Models;
 using UnityEngine;
 
 public class GameModeManager : MonoBehaviour
@@ -17,6 +20,12 @@ public class GameModeManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+    }
+
+    [Command]
+    void PlayerSpawn()
+    {
+        MultiplayerManager.Instance.SpawnPlayers();
     }
 }

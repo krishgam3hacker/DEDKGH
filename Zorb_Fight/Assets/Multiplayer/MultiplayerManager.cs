@@ -85,6 +85,7 @@ public class MultiplayerManager : MonoBehaviour
         }
     }
 
+    
     public void SpawnPlayers()
     {
         if (NetworkManager.Singleton.ConnectedClients.Count == 0)
@@ -98,10 +99,11 @@ public class MultiplayerManager : MonoBehaviour
             var player = Instantiate(playerPrefab);
             ulong playerId = ulong.Parse(AuthenticationService.Instance.PlayerId);
             player.GetComponent<NetworkObject>().SpawnAsPlayerObject(playerId);
+           
 
             //needs to spawn in network for control
-            //player.GetComponent<NetworkObject>().Spawn(true);
-           
+            player.GetComponent<NetworkObject>().Spawn(true);
+
         }
     }
 

@@ -1968,7 +1968,8 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 384205260}
-    PlayerPrefab: {fileID: 0}
+    PlayerPrefab: {fileID: 7359264167656165141, guid: 80ee95ccc6f35ae4dbf202b30895310f,
+      type: 3}
     NetworkPrefabs:
     - Override: 0
       Prefab: {fileID: 7359264167656165141, guid: 80ee95ccc6f35ae4dbf202b30895310f,
@@ -7379,7 +7380,6 @@ MonoBehaviour:
     type: 3}
   spawnedObjectPrefab: {fileID: 1138226611601956007, guid: 00ccec347eb23514ea25294eaf774909,
     type: 3}
-  spawnLocation: {fileID: 0}
   MaxConnections: 2
 --- !u!4 &1861923468
 Transform:

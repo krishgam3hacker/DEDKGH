@@ -489,7 +489,7 @@ PrefabInstance:
     - target: {fileID: 224130951485110974, guid: 9ed2a051c32b4fe47a5e4fb95c20b03f,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.000030517578
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224166536479716514, guid: 9ed2a051c32b4fe47a5e4fb95c20b03f,
         type: 3}
@@ -1430,7 +1430,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903130259}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -25.04, z: 0}
+  m_LocalPosition: {x: 0, y: -26.4, z: 0}
   m_LocalScale: {x: 18.69212, y: 18.69212, z: 18.69212}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1873,6 +1873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcd439c92977d604da9c2fcf1385e0cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GoliLocation: {fileID: 246671801}
 --- !u!1 &1679510352
 GameObject:
   m_ObjectHideFlags: 0
