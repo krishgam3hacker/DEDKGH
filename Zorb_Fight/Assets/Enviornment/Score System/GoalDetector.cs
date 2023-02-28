@@ -9,37 +9,22 @@ public class GoalDetector : MonoBehaviour
     public Transform redPlayerSpawnPoint;
     public Transform bluePlayerSpawnPoint;
     public Transform ballSpawnPoint;
-    public float respawnDelay = 2f;
 
-    private bool goalScored = false;
+   
 
-    private void OnTriggerEnter(Collider other)
+
+
+  /*  private void RespawnBallAndPlayers(float respawnDelay)
     {
-        // Check if the ball collided with a goal post
-        if (other.gameObject.CompareTag("GoalPost"))
-        {
-            // Increment the score for the appropriate team
-            if (other.gameObject.name == "RedGoalPost")
-            {
-                scoreManager.IncrementScore("Blue");
-                goalScored = true;
-                Invoke("RespawnBallAndPlayers", respawnDelay);
-            }
-            else if (other.gameObject.name == "BlueGoalPost")
-            {
-                scoreManager.IncrementScore("Red");
-                goalScored = true;
-                Invoke("RespawnBallAndPlayers", respawnDelay);
-            }
-        }
-    }
 
-    private void RespawnBallAndPlayers()
-    {
-        // Respawn the ball and players after a delay
+        Debug.Log("Scene Restart");
+
+
+
+       *//* // Respawn the ball and players after a delay
         Invoke("RespawnBall", respawnDelay);
-        Invoke("RespawnPlayers", respawnDelay);
-    }
+        Invoke("RespawnPlayers", respawnDelay);*//*
+    }*/
 
     private void RespawnBall()
     {
