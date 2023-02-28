@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Netcode;
 using UnityEngine;
 
-public class goaler : NetworkBehaviour
+public class goaler : MonoBehaviour
 {
     [SerializeField] private float forceMultiplier = 2.0f;
     private Rigidbody rb;
