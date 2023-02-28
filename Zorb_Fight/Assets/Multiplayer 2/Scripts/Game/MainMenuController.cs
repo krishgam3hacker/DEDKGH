@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+namespace Game
+{
+
 public class MainMenuController : MonoBehaviour
 {
     [SerializeField] private GameObject _mainScreen;
@@ -55,4 +58,6 @@ public class MainMenuController : MonoBehaviour
             SceneManager.LoadSceneAsync("Lobby");
         }
     }
+}
+
 }

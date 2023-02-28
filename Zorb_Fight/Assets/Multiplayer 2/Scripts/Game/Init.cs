@@ -6,6 +6,8 @@ using Unity.Services.Core;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+namespace Game
+{
 public class Init : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -49,4 +51,6 @@ public class Init : MonoBehaviour
     {
         
     }
+}
+
 }

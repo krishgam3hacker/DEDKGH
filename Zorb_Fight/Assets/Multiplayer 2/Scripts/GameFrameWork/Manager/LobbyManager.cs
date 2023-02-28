@@ -9,6 +9,7 @@ using Unity.Services.Lobbies;
 using Unity.Services.Lobbies.Models;
 using Unity.VisualScripting;
 using UnityEngine;
+using GameFramework.Events;
 
 namespace GameFramework.Core.GameFramework.Manager
 {
@@ -77,6 +78,8 @@ namespace GameFramework.Core.GameFramework.Manager
                 if(newLobby.LastUpdated > _lobby.LastUpdated)
                 {
                     _lobby = newLobby;
+                    
+                    LobbyEvents.OnLobbyUpdated?.Invoke(_lobby);
                 }
                 yield return new WaitForSecondsRealtime(waitTimeSeconds);
             }
@@ -119,8 +122,8 @@ namespace GameFramework.Core.GameFramework.Manager
             {
 
           _lobby =  await LobbyService.Instance.JoinLobbyByCodeAsync(code, options);
-            }catch(System.Exception e) {
-                Debug.Log(e);
+            }catch(System.Exception)
+            {
             return false;
             }
 
@@ -128,6 +131,40 @@ namespace GameFramework.Core.GameFramework.Manager
             return true;
 
 
+
+        }
+
+        public List<Dictionary<string, PlayerDataObject>> GetPlayersData()
+        {
+            List<Dictionary<string,PlayerDataObject>> data = new List<Dictionary<string, PlayerDataObject>>();
+            //goes to each palyer and extract their data
+            foreach(Player palyer in _lobby.Players)
+            {
+                data.Add(palyer.Data);
+            }
+
+            return data;
+        }
+
+        public async Task<bool> UpdatePlayerData(string playerId, Dictionary<string, string> data)
+        {
+            Dictionary<string, PlayerDataObject> playerData = SerializePlayerData(data);
+            UpdatePlayerOptions options = new UpdatePlayerOptions()
+            {
+                Data = playerData
+            };
+            try
+            {
+
+                await LobbyService.Instance.UpdatePlayerAsync(_lobby.Id, playerId, options);
+            } catch (System.Exception)
+            {
+                return false;
+            }
+
+            LobbyEvents.OnLobbyUpdated(_lobby);
+
+            return true;
 
         }
     }
