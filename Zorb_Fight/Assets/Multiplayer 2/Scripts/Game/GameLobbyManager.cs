@@ -20,7 +20,7 @@ namespace Game
         private List<LobbyPlayerData> _lobbyPlayerDatas = new List<LobbyPlayerData>();
         private LobbyPlayerData _localLobbyPlayerData;
         private LobbyData _lobbyData;
-        private int _maxNumberOfPlayers = 4;
+        private int _maxNumberOfPlayers = 6;
         private bool _inGame;
         private bool _wasDisconnected;
         private string _previousRelayCode;
