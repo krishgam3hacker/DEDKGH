@@ -101,7 +101,6 @@ GameObject:
   - component: {fileID: 5675757229914879164}
   - component: {fileID: 1729758269267910612}
   - component: {fileID: -8263965570445061226}
-  - component: {fileID: -3662080435361011852}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -280,11 +279,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7359264167656165141}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fcec54d90fbaa542bc1d47477596014, type: 3}
+  m_Script: {fileID: 11500000, guid: 446da99c611e1e841a1cb470d030bcae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnedObjectPrefab: {fileID: 1138226611601956007, guid: 00ccec347eb23514ea25294eaf774909,
-    type: 3}
   speed: 10
   drag: 5
   yForce: 500
@@ -298,6 +295,7 @@ MonoBehaviour:
   - {x: 1, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
   - {x: 0, y: 0, z: -1}
+  forceMultiplier: 1.1
 --- !u!114 &1729758269267910612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,19 +334,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-3662080435361011852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7359264167656165141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9141a08cb4cb444d9f23d8a3d2a7c2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  freelookCam: {fileID: 0}
-  cam: {fileID: 0}
-  cameraHeight: 10
-  cameraDistance: 20
