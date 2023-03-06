@@ -608,7 +608,7 @@ GameObject:
   - component: {fileID: 4604548367659368169}
   - component: {fileID: 4604548367659368170}
   - component: {fileID: 1395370560192214718}
-  - component: {fileID: 4604548367659368166}
+  - component: {fileID: 1969748133813817214}
   m_Layer: 0
   m_Name: Player Module Network
   m_TagString: Untagged
@@ -700,7 +700,7 @@ MonoBehaviour:
   m_DefaultActionMap: CharacterControls
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &4604548367659368166
+--- !u!114 &1969748133813817214
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -709,11 +709,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4604548367659368171}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5c71512de9b2b64cafdf2e07da5fbb4, type: 3}
+  m_Script: {fileID: 11500000, guid: 05d295e91a115f644aaa602a40e9f9db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6469420438699426778}
-  cmcam: {fileID: 7673144197330921691}
+  mainCamera: {fileID: 1595787402982759190}
+  CamSocket: {fileID: 5685039891738726145}
+  cvm: {fileID: 0}
   raycastLength: 1.15
   groundTag: Ground
   isGroundedBall: 0
@@ -1119,7 +1121,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6821128299011613324}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}

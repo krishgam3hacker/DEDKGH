@@ -7,12 +7,15 @@ using Cinemachine;
 using Game;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Services.Lobbies.Models;
 
 public class PlayerBallMulti : NetworkBehaviour
 {
     [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerInputActions inputActions;
-    [SerializeField] public Transform cmcam;
+    [SerializeField] public Transform mainCamera;
+    [SerializeField] private GameObject CamSocket;
+    [SerializeField] private CinemachineVirtualCamera cvm;
 
     #region Ground Checks
     [Header("Ground Check")]
@@ -40,9 +43,16 @@ public class PlayerBallMulti : NetworkBehaviour
         rb.isKinematic = false;
         inputActions = new PlayerInputActions();
         inputActions.Enable();
-        cmcam = Camera.main.transform;
+        mainCamera = Camera.main.transform;
 
         Cursor.lockState = CursorLockMode.Locked;
+
+
+        GameObject spawnedplayer = this.gameObject;
+        
+        
+            CamSocket.GetComponentInChildren<Camera>().enabled = true;
+
 
     }
 
@@ -73,6 +83,7 @@ public class PlayerBallMulti : NetworkBehaviour
             }
         }
 
+        CamSocket.GetComponentInChildren<Camera>().enabled = true;
     }
 
     private void MoveBall(Vector2 direction)
@@ -100,7 +111,7 @@ public class PlayerBallMulti : NetworkBehaviour
                 Vector3 moveDirection = new Vector3(direction.x, 0, direction.y);
 
                 // Rotate the direction vector to match the forward direction of the camera
-                moveDirection = cmcam.TransformDirection(moveDirection);
+                moveDirection = mainCamera.TransformDirection(moveDirection);
                 moveDirection.y = 0;
                 moveDirection = moveDirection.normalized;
 
@@ -148,7 +159,7 @@ public class PlayerBallMulti : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-        CinemachineVirtualCamera cvm = cmcam.gameObject.GetComponent<CinemachineVirtualCamera>();
+         cvm = CamSocket.gameObject.GetComponentInChildren<CinemachineVirtualCamera>();
 
         if (IsOwner)
         {
