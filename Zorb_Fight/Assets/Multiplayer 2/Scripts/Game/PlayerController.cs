@@ -71,26 +71,4 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
-    [ServerRpc]
-    private void UseButtonServerRpc()
-    {
-        if (Physics.Raycast(_camTransform.position, _camTransform.forward, out RaycastHit hit, _interactDistance, _interactionLayer))
-        {
-/*            if (hit.collider.TryGetComponent<ButtonDoor>(out ButtonDoor buttonDoor))
-            {
-                buttonDoor.Activate();
-            }*/
-        }
-    }
-
-    /*private void RotateCamera(Vector2 lookInput)
-    {
-        _cameraAngle = Vector3.SignedAngle(transform.forward, _camTransform.forward, _camTransform.right);
-        float cameraRotationAmount = lookInput.y * _turnSpeed * Time.deltaTime;
-        float newCameraAngle = _cameraAngle - cameraRotationAmount;
-        if (newCameraAngle <= _minMaxRotationX.x && newCameraAngle >= _minMaxRotationX.y)
-        {
-            _camTransform.RotateAround(_camTransform.position, _camTransform.right, -lookInput.y * _turnSpeed * Time.deltaTime);
-        }
-    }*/
 }
