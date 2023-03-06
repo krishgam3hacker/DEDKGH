@@ -54,8 +54,24 @@ public class PlayerBallMulti : NetworkBehaviour
     void FixedUpdate()
     {
         Vector2 direction = inputActions.CharacterControls.Movement.ReadValue<Vector2>();
-        GroundCheck();
-        MoveBall(direction);
+
+        if (IsServer && IsLocalPlayer)
+        {
+            GroundCheck();
+            MoveBall(direction);
+
+
+        }
+        else if (IsLocalPlayer)
+        {
+            if (inputActions.CharacterControls.Movement.inProgress)
+            {
+
+                GroundCheck();
+                
+                MoveBallServerRPC(direction);
+            }
+        }
 
     }
 
@@ -124,6 +140,11 @@ public class PlayerBallMulti : NetworkBehaviour
         }
     }
 
+    [ServerRpc]
+    private void MoveBallServerRPC(Vector2 direction)
+    {
+        MoveBall(direction);
+    }
 
     public override void OnNetworkSpawn()
     {
