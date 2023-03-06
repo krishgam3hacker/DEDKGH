@@ -43,7 +43,7 @@ public class PlayerBallMulti : NetworkBehaviour
         rb.isKinematic = false;
         inputActions = new PlayerInputActions();
         inputActions.Enable();
-        mainCamera = Camera.main.transform;
+        
 
         Cursor.lockState = CursorLockMode.Locked;
 
@@ -58,8 +58,20 @@ public class PlayerBallMulti : NetworkBehaviour
 
     private void Update()
     {
+        // Set the camera's active state based on whether this player is the local player
+        if (IsLocalPlayer)
+        {
+            Debug.Log("Enabling camera for local player");
+            GetComponentInChildren<Camera>().enabled = true;
+        }
+        else
+        {
+            Debug.Log("Disabling camera for remote player");
+            GetComponentInChildren<Camera>().enabled = false;
+            GetComponentInChildren<Camera>().gameObject.SetActive(false);
+            GetComponentInChildren<CinemachineFreeLook>().gameObject.SetActive(false);
 
-
+        }
     }
     void FixedUpdate()
     {
