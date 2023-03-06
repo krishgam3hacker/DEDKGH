@@ -1,4 +1,5 @@
 using Cinemachine;
+using GameFramework.Network.Movement;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Netcode;
@@ -6,11 +7,15 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class RollingBall : NetworkBehaviour
+public class RollingBallM : NetworkBehaviour
 {
-    private Rigidbody rb;
-    private PlayerInputActions inputActions;
-   [SerializeField] private Transform mainCameraTransform;
+    [SerializeField]private Rigidbody rb;
+    [SerializeField] private PlayerInputActions inputActions;
+    [SerializeField] public Transform mainCameraTransform;
+    [SerializeField] private NetworkMovementComponent _playerMovement;
+
+
+    private float _cameraAngle;
 
     #region Ball Controls
     [Header("Ball Controls")]
@@ -27,63 +32,75 @@ public class RollingBall : NetworkBehaviour
     public Transform raycastStart;
 
     // Directions to check for ground
-    public Vector3[] groundCheckDirections = { Vector3.down, Vector3.up, Vector3.left, Vector3.right, Vector3.forward, Vector3.back }; 
+    public Vector3[] groundCheckDirections = { Vector3.down, Vector3.up, Vector3.left, Vector3.right, Vector3.forward, Vector3.back };
 
     #endregion
 
-
-
-
-    private void Start()
+    public override void OnNetworkSpawn()
     {
-        inputActions = new PlayerInputActions();
-        rb = GetComponent<Rigidbody>();
-        rb.isKinematic = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        CinemachineVirtualCamera cvm = mainCameraTransform.gameObject.GetComponent<CinemachineVirtualCamera>();
 
-        rb.isKinematic = true;  
-    }
 
-    void OnEnable()
-    {
-        inputActions.Enable();
-    }
-
-    void OnDisable()
-    {
-        inputActions.Disable();
-    }
-
-    void Update()
-    {
-       // if (!IsOwner) return;
-        if (IsLocalPlayer)
+        if (IsOwner)
         {
-
-        JumpCheck();
-        GroundCheck();
-        Vector2 direction = inputActions.CharacterControls.Movement.ReadValue<Vector2>();
-         MoveBall(direction);
+            cvm.Priority = 1;
+        }
+        else
+        {
+            cvm.Priority = 0;
         }
 
 
     }
 
+
+    private void Start()
+    {
+        rb = GetComponentInChildren<Rigidbody>();
+        rb.isKinematic = false;
+
+        inputActions = new PlayerInputActions();
+        inputActions.Enable();
+
+        Cursor.lockState = CursorLockMode.Locked;
+
+    }
+
+
+
+    void Update()
+    {
+        Vector2 direction = inputActions.CharacterControls.Movement.ReadValue<Vector2>();
+        Vector2 lookInput = inputActions.CharacterControls.Look.ReadValue<Vector2>();
+
+        if (IsClient && IsLocalPlayer)
+        {
+            _playerMovement.ProcessLocalPlayerMovement(direction, lookInput);
+        }
+        else
+        {
+            _playerMovement.ProcessSimulatedPlayerMovement();
+        }
+
+        GroundCheck();
+        JumpCheck();
+    }
+
     void FixedUpdate()
     {
       //  if (!IsOwner) return;
-     //   Vector2 direction = inputActions.CharacterControls.Movement.ReadValue<Vector2>();
-      //   MoveBall(direction);
+       // Vector2 direction = inputActions.CharacterControls.Movement.ReadValue<Vector2>();
+        //MoveBall(direction);
     }
 
-private void MoveBall(Vector2 direction)
+    private void MoveBall(Vector2 direction)
 {
     if (direction.magnitude > 0)
     {
         if (!isGroundedBall)
         {
            // Debug.Log("Inair");
-            // add air control
+            // adds air control
             Vector3 moveDirection = new Vector3(direction.x, 0, direction.y);
             moveDirection.y = speed;
             moveDirection = moveDirection.normalized;
@@ -123,45 +140,32 @@ private void MoveBall(Vector2 direction)
 }
 
 
-    public override void OnNetworkSpawn()
-    {
-        CinemachineVirtualCamera cvm = mainCameraTransform.gameObject.GetComponent<CinemachineVirtualCamera>();
 
-        if (IsOwner)
-        {
-            cvm.Priority = 1;
-        }
-        else
-        {
-            cvm.Priority = 0;
-        }
-
-
-    }
 
     private void JumpCheck()
-{
-//check if player is jumping
+    {
+        //check if player is jumping
         if (inputActions.CharacterControls.Jump.triggered)
-         {
+        {
             if(isGroundedBall)
             {
 
               Vector3 jumpDirection = rb.velocity.normalized;
-              jumpDirection.y = yForce;
-              GetComponent<Rigidbody>().AddForce(jumpDirection);   
+              jumpDirection.y = yForce;  
+                rb.AddForce(jumpDirection); 
             }
             else
             {
                 return;
             }
-         }
+        }
 
-}
-private void GroundCheck()
-{
+    }
+
+    private void GroundCheck()
+    {
     // use the radius of the sphere collider on the ball
-    float radius = GetComponent<SphereCollider>().radius; 
+    float radius = GetComponentInChildren<SphereCollider>().radius; 
     Vector3 position = transform.position;
     
     bool isGrounded = false;
@@ -172,7 +176,7 @@ private void GroundCheck()
         if (Physics.SphereCast(position, radius, direction, out hitInfo, raycastLength))
         {
             Debug.DrawRay(position, direction * hitInfo.distance, Color.red);
-           // Debug.Log("Ground hit: " + hitInfo.collider.gameObject.name);
+            Debug.Log("Ground hit: " + hitInfo.collider.gameObject.name);
             
             // Check if the ground object has the specified tag
             if (hitInfo.collider.gameObject.CompareTag(groundTag))
@@ -191,14 +195,9 @@ private void GroundCheck()
     {
         isGroundedBall = false;
     }
-}
-
-
-    [ClientRpc]
-    private void TestClientRpc()
-    {
-        Debug.Log("Testclientrpc");
     }
+
+
 
     [SerializeField] private float forceMultiplier = 1.1f;
 

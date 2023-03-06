@@ -11,16 +11,39 @@ namespace GameFramework.Network.Movement
     {
         [SerializeField] private CharacterController _cc;
 
-        [SerializeField] private float _speed;
-        [SerializeField] private float _turnSpeed;
 
+        [SerializeField] private float _turnSpeed;
+        [SerializeField] private Rigidbody rb;
         [SerializeField] private Transform _camSocket;
         [SerializeField] private GameObject _vcam;
 
-        [SerializeField] private MeshFilter _meshFilter;
+
         [SerializeField] private Color _color;
 
         private Transform _vcamTransform;
+        [SerializeField] public Transform mainCameraTransform;
+
+
+        #region GroundCheck
+        [Header("Ground Check")]
+        public float raycastLength = 1f;
+        [SerializeField] private string groundTag = "Ground";
+        private bool isGroundedBall;
+        public Transform raycastStart;
+
+        // Directions to check for ground
+        public Vector3[] groundCheckDirections = { Vector3.down, Vector3.up, Vector3.left, Vector3.right, Vector3.forward, Vector3.back };
+
+        #endregion
+
+        #region Ball Controls
+        [Header("Ball Controls")]
+        [SerializeField] private float _speed = 10.0f; // Speed of the ball
+        public float drag = 5.0f; // Drag force to apply when not moving
+        public float yForce = 500.0f;
+        #endregion
+
+
 
         private int _tick = 0;
         private float _tickRate = 1f / 60f;
@@ -182,21 +205,49 @@ namespace GameFramework.Network.Movement
             _transformStates[bufferIndex] = transformState;
         }
 
-        private void MovePlayer(Vector2 movementInput)
+        private void MovePlayer(Vector2 direction)
         {
-            Vector3 movement = movementInput.x * _vcamTransform.right + movementInput.y * _vcamTransform.forward;
-
-            movement.y = 0;
-            if (!_cc.isGrounded)
+            if (direction.magnitude > 0)
             {
-                movement.y = -9.61f;
+                if (!isGroundedBall)
+                {
+
+
+                    // Debug.Log("Inair");
+                    // add air control
+                    Vector3 moveDirection = new Vector3(direction.x, 0, direction.y);
+                    moveDirection.y = _speed;
+                    moveDirection = moveDirection.normalized;
+
+                    rb.AddForce(moveDirection.x * _speed / 2, 0, moveDirection.z * _speed / 2);
+
+
+                    //to add air resistance
+                    rb.AddForce(-rb.velocity.x * drag / 2, 0, -rb.velocity.z * drag / 2);
+
+                    // Increase the fall speed while in air
+                    rb.AddForce(0, -_speed, 0);
+
+                }
+                else
+                {
+                    Vector3 moveDirection = new Vector3(direction.x, 0, direction.y);
+
+                    // Rotate the direction vector to match the forward direction of the camera
+                    moveDirection = mainCameraTransform.TransformDirection(moveDirection);
+                    moveDirection.y = rb.velocity.y;
+                    moveDirection = moveDirection.normalized;
+
+                    // Move the ball in the direction
+                    rb.AddForce(moveDirection.x * _speed, 0, moveDirection.z * _speed);
+                }
+
             }
 
-            _cc.Move(movement * _speed * _tickRate);
         }
 
 
-        private void RotatePlayer(Vector2 lookInput)
+         private void RotatePlayer(Vector2 lookInput)
         {
             _vcamTransform.RotateAround(_vcamTransform.position, _vcamTransform.right, -lookInput.y * _turnSpeed * _tickRate);
             transform.RotateAround(transform.position, transform.up, lookInput.x * _turnSpeed * _tickRate);
@@ -233,8 +284,49 @@ namespace GameFramework.Network.Movement
             if (ServerTransformState.Value != null)
             {
                 Gizmos.color = _color;
-                Gizmos.DrawMesh(_meshFilter.mesh, ServerTransformState.Value.Position);
+
             }
         }
+
+        private void GroundCheck()
+        {
+            // use the radius of the sphere collider on the ball
+            float radius = GetComponentInChildren<SphereCollider>().radius;
+            Vector3 position = transform.position;
+
+            bool isGrounded = false;
+            for (int i = 0; i < groundCheckDirections.Length; i++)
+            {
+                Vector3 direction = transform.TransformDirection(groundCheckDirections[i]);
+                RaycastHit hitInfo;
+                if (Physics.SphereCast(position, radius, direction, out hitInfo, raycastLength))
+                {
+                    Debug.DrawRay(position, direction * hitInfo.distance, Color.red);
+                    // Debug.Log("Ground hit: " + hitInfo.collider.gameObject.name);
+
+                    // Check if the ground object has the specified tag
+                    if (hitInfo.collider.gameObject.CompareTag(groundTag))
+                    {
+                        isGrounded = true;
+                        break;
+                    }
+                }
+            }
+
+            if (isGrounded)
+            {
+                isGroundedBall = true;
+            }
+            else
+            {
+                isGroundedBall = false;
+            }
+        }
+
+
+
     }
+
+
+
 }
