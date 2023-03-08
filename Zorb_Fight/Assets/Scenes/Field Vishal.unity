@@ -1583,6 +1583,7 @@ GameObject:
   - component: {fileID: 903130263}
   - component: {fileID: 903130262}
   - component: {fileID: 903130261}
+  - component: {fileID: 903130264}
   m_Layer: 6
   m_Name: Plane
   m_TagString: Ground
@@ -1669,6 +1670,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 903130259}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &903130264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903130259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7e86b7ac7b96cb4d84d4b5dfb1fb9fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GrassPrefab: {fileID: 7608620694570102232, guid: 20b926a509e9245418148248a826bcf4,
+    type: 3}
+  grassSize: 50
+  player: {fileID: 413083385}
+  mat: {fileID: 2100000, guid: 8e4a869c459c3e54cbaff69f3380d84e, type: 2}
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0
