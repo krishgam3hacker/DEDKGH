@@ -6,6 +6,7 @@ using Unity.Netcode;
 using Cinemachine;
 using Game;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.InputSystem;
 using Unity.Services.Lobbies.Models;
 
@@ -16,6 +17,22 @@ public class PlayerBallMulti : NetworkBehaviour
     [SerializeField] public Transform mainCamera;
     [SerializeField] private GameObject CamSocket;
     [SerializeField] private CinemachineVirtualCamera cvm;
+
+    
+
+    private enum Team
+    {
+        Blue,
+        Red
+    }
+
+    private enum skins
+    {
+        tech,
+        soccar
+    }
+
+
 
     #region Ground Checks
     [Header("Ground Check")]
@@ -89,10 +106,10 @@ public class PlayerBallMulti : NetworkBehaviour
             if (inputActions.CharacterControls.Movement.inProgress)
             {
 
-                GroundCheck();
                 
                 MoveBallServerRPC(direction);
             }
+                GroundCheckServerRPC();
         }
 
         CamSocket.GetComponentInChildren<Camera>().enabled = true;
@@ -143,6 +160,28 @@ public class PlayerBallMulti : NetworkBehaviour
     }
 
     private void GroundCheck()
+    {
+        foreach (Vector3 direction in groundCheckDirections)
+        {
+            RaycastHit hitInfo;
+            if (Physics.Raycast(raycastStart.position, direction, out hitInfo, raycastLength))
+            {
+                Debug.DrawRay(raycastStart.position, direction * raycastLength, Color.green);
+                if (hitInfo.collider.CompareTag(groundTag))
+                {
+                    isGroundedBall = true;
+                    break;
+                }
+            }
+            else
+            {
+                Debug.DrawRay(raycastStart.position, direction * raycastLength, Color.red);
+            }
+        }
+    }
+
+    [ServerRpc]
+    private void GroundCheckServerRPC()
     {
         foreach (Vector3 direction in groundCheckDirections)
         {

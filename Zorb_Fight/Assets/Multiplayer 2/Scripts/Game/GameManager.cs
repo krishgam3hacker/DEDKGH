@@ -10,6 +10,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private static GameManager instance;
+
+    [SerializeField] public int fps = 70;
 
     private void OnEnable()
     {
@@ -29,6 +32,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Application.targetFrameRate = fps;
+
         NetworkManager.Singleton.NetworkConfig.ConnectionApproval = true;
         if (RelayManager.Instance.IsHost)
         {

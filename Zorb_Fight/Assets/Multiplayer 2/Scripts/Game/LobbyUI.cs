@@ -105,7 +105,7 @@ namespace Game
 
         private void UpdateMap()
         {
-            _mapImage.color = _mapSelectionData.Maps[_currentMapIndex].MapThumbnail;
+            _mapImage.sprite = _mapSelectionData.Maps[_currentMapIndex].Mapimage;
             _mapName.text = _mapSelectionData.Maps[_currentMapIndex].MapName;
         }
 

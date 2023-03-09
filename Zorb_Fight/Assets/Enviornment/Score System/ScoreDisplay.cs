@@ -26,7 +26,7 @@ public class ScoreDisplay : MonoBehaviour
             scoreManager = GM.GetComponent<ScoreManager>();
         }
         // Update the score display with the current scores
-        redScoreText.text = "Red: " + scoreManager.redScore;
-        blueScoreText.text = "Blue: " + scoreManager.blueScore;
+        redScoreText.text = "" + scoreManager.redScore;
+        blueScoreText.text = "" + scoreManager.blueScore;
     }
 }

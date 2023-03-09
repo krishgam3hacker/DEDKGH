@@ -1,3 +1,5 @@
+using Game;
+using GameFramework.Core.Data;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -48,9 +50,13 @@ public class GoaliScore : MonoBehaviour
     private void RespawnBallAndPlayers(float respawnDelay)
     {
 
-        Debug.Log("Scene Restart");
+        Debug.Log("Round  Reset");
+        //GameModeManager.instance.OnPointScored() return;
 
-        SceneManager.LoadScene("Enviornment_testField");
+        //Game should Reset
+
+
+        // SceneManager.LoadScene("Enviornment_testField");
 
     }
 
