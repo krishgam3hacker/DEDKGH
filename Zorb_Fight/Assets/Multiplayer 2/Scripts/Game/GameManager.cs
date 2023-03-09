@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log($"Player Connected: {obj}");
 
+        Debug.Log("Player spawned");
     }
 
     private void ConnectionApproval(NetworkManager.ConnectionApprovalRequest request, NetworkManager.ConnectionApprovalResponse response)

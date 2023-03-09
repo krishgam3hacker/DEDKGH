@@ -20,17 +20,7 @@ public class PlayerBallMulti : NetworkBehaviour
 
     
 
-    private enum Team
-    {
-        Blue,
-        Red
-    }
 
-    private enum skins
-    {
-        tech,
-        soccar
-    }
 
 
 
@@ -85,7 +75,7 @@ public class PlayerBallMulti : NetworkBehaviour
         {
             Debug.Log("Disabling camera for remote player");
             GetComponentInChildren<Camera>().enabled = false;
-            GetComponentInChildren<Camera>().gameObject.SetActive(false);
+            //GetComponentInChildren<Camera>().gameObject.SetActive(false);
             GetComponentInChildren<CinemachineFreeLook>().gameObject.SetActive(false);
 
         }

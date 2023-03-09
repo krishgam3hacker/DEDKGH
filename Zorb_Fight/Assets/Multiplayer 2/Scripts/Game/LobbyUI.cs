@@ -19,12 +19,14 @@ namespace Game
         [SerializeField] private Button _rightButton;
         [SerializeField] private TextMeshProUGUI _mapName;
         [SerializeField] private MapSelectionData _mapSelectionData;
+        [SerializeField] private Button _teamChange;
 
         private int _currentMapIndex = 0;
 
         private void OnEnable()
         {
             _readyButton.onClick.AddListener(OnReadyPressed);
+            _teamChange.onClick.AddListener(OnTeamPressed);
             if (GameLobbyManager.Instance.IsHost)
             {
                 _leftButton.onClick.AddListener(OnLeftButtonClicked);
@@ -41,6 +43,7 @@ namespace Game
 
         private void OnDisable()
         {
+            _teamChange.onClick.RemoveAllListeners();
             _readyButton.onClick.RemoveAllListeners();
             _leftButton.onClick.RemoveAllListeners();
             _rightButton.onClick.RemoveAllListeners();
@@ -100,6 +103,15 @@ namespace Game
             if (succeed)
             {
                 _readyButton.gameObject.SetActive(false);
+            }
+        }
+
+        private async void OnTeamPressed()
+        {
+            bool succeed = await GameLobbyManager.Instance.SetPlayerTeam();
+            if (succeed)
+            {
+                Debug.Log("Team set to Red");
             }
         }
 

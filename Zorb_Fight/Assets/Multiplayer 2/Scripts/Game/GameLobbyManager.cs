@@ -128,6 +128,12 @@ namespace Game
             return await LobbyManager.Instance.UpdatePlayerData(_localLobbyPlayerData.Id, _localLobbyPlayerData.Serialize());
         }
 
+        public async Task<bool> SetPlayerTeam()
+        {
+            _localLobbyPlayerData.IsRed = true;
+            return await LobbyManager.Instance.UpdatePlayerData(_localLobbyPlayerData.Id, _localLobbyPlayerData.Serialize());
+        }
+
         public int GetMapIndex()
         {
             return _lobbyData.MapIndex;
