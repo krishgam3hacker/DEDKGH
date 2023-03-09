@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using Unity.Netcode;
-using Cinemachine;
 using Game;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -14,9 +13,10 @@ public class PlayerBallMulti : NetworkBehaviour
 {
     [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerInputActions inputActions;
-    [SerializeField] public Transform mainCamera;
+    [SerializeField] private Transform mainCamera;
     [SerializeField] private GameObject CamSocket;
-    [SerializeField] private CinemachineVirtualCamera cvm;
+    [SerializeField] private CinemachineFreeLook cvm;
+
 
     
 
@@ -59,6 +59,11 @@ public class PlayerBallMulti : NetworkBehaviour
         
         
             CamSocket.GetComponentInChildren<Camera>().enabled = true;
+       GameObject cminput = CamSocket.GetComponentInChildren<CinemachineFreeLook>().gameObject;
+      //  Init.playerid = 
+         cminput.GetComponent<CinemachineInputProvider>().PlayerIndex= -1;
+
+
 
 
     }
@@ -70,6 +75,7 @@ public class PlayerBallMulti : NetworkBehaviour
         {
             Debug.Log("Enabling camera for local player");
             GetComponentInChildren<Camera>().enabled = true;
+            mainCamera = GetComponentInChildren<Camera>().transform;
         }
         else
         {
@@ -77,6 +83,7 @@ public class PlayerBallMulti : NetworkBehaviour
             GetComponentInChildren<Camera>().enabled = false;
             //GetComponentInChildren<Camera>().gameObject.SetActive(false);
             GetComponentInChildren<CinemachineFreeLook>().gameObject.SetActive(false);
+            GetComponentInChildren<Camera>().gameObject.SetActive(false);
 
         }
     }
@@ -200,11 +207,14 @@ public class PlayerBallMulti : NetworkBehaviour
 
     public override void OnNetworkSpawn()
     {
-         cvm = CamSocket.gameObject.GetComponentInChildren<CinemachineVirtualCamera>();
+         cvm = CamSocket.gameObject.GetComponentInChildren<CinemachineFreeLook>();
+        GetComponent<CinemachineInputProvider>().PlayerIndex = Random.Range(1, 100);
 
         if (IsOwner)
         {
             cvm.Priority = 1;
+            Debug.Log("cvm set 1");
+
         }
         else
         {
