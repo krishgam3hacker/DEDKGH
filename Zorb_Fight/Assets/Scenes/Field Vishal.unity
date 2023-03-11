@@ -912,9 +912,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da5a5227164c814d824f3d1f95ad92d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 9
+  speed: 20
   drag: 2.5
-  yForce: 500
+  yForce: 1000
   raycastLength: 1
   groundTag: Ground
   raycastStart: {fileID: 413083390}
@@ -1297,7 +1297,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703972732}
-  m_LocalRotation: {x: 0.15748341, y: -0.689347, z: 0.15748355, w: 0.6893465}
+  m_LocalRotation: {x: 0.15748343, y: -0.689347, z: 0.15748356, w: 0.6893465}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1682,11 +1682,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7e86b7ac7b96cb4d84d4b5dfb1fb9fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GrassPrefab: {fileID: 7608620694570102232, guid: 20b926a509e9245418148248a826bcf4,
-    type: 3}
-  grassSize: 50
-  player: {fileID: 413083385}
-  mat: {fileID: 2100000, guid: 8e4a869c459c3e54cbaff69f3380d84e, type: 2}
 --- !u!1 &961739749
 GameObject:
   m_ObjectHideFlags: 0
