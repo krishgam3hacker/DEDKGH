@@ -923,10 +923,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 274614894, guid: 8852bfd7e19dd5f4791f6a5d9670c677, type: 3}
-      propertyPath: scoreManager
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3067548600761151749, guid: 8852bfd7e19dd5f4791f6a5d9670c677,
         type: 3}
       propertyPath: m_RootOrder
@@ -986,6 +982,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goali
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052067745426239926, guid: 8852bfd7e19dd5f4791f6a5d9670c677,
+        type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1620571596
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8852bfd7e19dd5f4791f6a5d9670c677, type: 3}
@@ -1938,20 +1939,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8755080303949024481, guid: b8dbc082735a3254ea92d5757a7a4c08,
         type: 3}
+      propertyPath: LogLevel
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8755080303949024481, guid: b8dbc082735a3254ea92d5757a7a4c08,
+        type: 3}
       propertyPath: NetworkConfig.PlayerPrefab
       value: 
-      objectReference: {fileID: 4604548367659368171, guid: 5f1b18958333f63438ac354b603118b0,
+      objectReference: {fileID: 4604548367659368171, guid: 2a489ce721654104db3adf8a93cfdb25,
         type: 3}
     - target: {fileID: 8755080303949024481, guid: b8dbc082735a3254ea92d5757a7a4c08,
         type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8755080303949024481, guid: b8dbc082735a3254ea92d5757a7a4c08,
         type: 3}
       propertyPath: NetworkConfig.NetworkPrefabs.Array.data[0].Prefab
       value: 
-      objectReference: {fileID: 4604548367659368171, guid: 5f1b18958333f63438ac354b603118b0,
+      objectReference: {fileID: 4604548367659368171, guid: 2a489ce721654104db3adf8a93cfdb25,
         type: 3}
     - target: {fileID: 8755080303949024481, guid: b8dbc082735a3254ea92d5757a7a4c08,
         type: 3}

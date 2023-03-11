@@ -69,7 +69,7 @@ public class GameModeManager : MonoBehaviour
                 case State.GameOver:
                 break;
         }
-                Debug.Log(state);
+               // Debug.Log(state);
     }
     public bool OnPointScored()
     {

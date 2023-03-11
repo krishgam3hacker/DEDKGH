@@ -8,18 +8,21 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.InputSystem;
 using Unity.Services.Lobbies.Models;
+using UnityEngine.EventSystems;
 
 public class PlayerBallMulti : NetworkBehaviour
 {
     [SerializeField] private Rigidbody rb;
     [SerializeField] private PlayerInputActions inputActions;
+
+
+    #region Camera Stuff
     [SerializeField] private Transform mainCamera;
     [SerializeField] private GameObject CamSocket;
-    [SerializeField] private CinemachineFreeLook cvm;
+    [SerializeField] private CinemachineVirtualCamera cvm;
+    #endregion
 
-
-    
-
+    [SerializeField] private bool isLocalClient;
 
 
 
@@ -41,7 +44,21 @@ public class PlayerBallMulti : NetworkBehaviour
     public float yForce = 500.0f;
     #endregion
 
+    public override void OnNetworkSpawn()
+    {
+        cvm = CamSocket.gameObject.GetComponentInChildren<CinemachineVirtualCamera>();
 
+        if (IsOwner)
+        {
+            cvm.Priority = 1;
+            Debug.Log("cvm set 1");
+
+        }
+        else
+        {
+            cvm.Priority = 0;
+        }
+    }
 
 
     void Start()
@@ -53,15 +70,11 @@ public class PlayerBallMulti : NetworkBehaviour
         
 
         Cursor.lockState = CursorLockMode.Locked;
-
-
-        GameObject spawnedplayer = this.gameObject;
         
-        
-            CamSocket.GetComponentInChildren<Camera>().enabled = true;
-       GameObject cminput = CamSocket.GetComponentInChildren<CinemachineFreeLook>().gameObject;
-      //  Init.playerid = 
-         cminput.GetComponent<CinemachineInputProvider>().PlayerIndex= -1;
+         CamSocket.GetComponentInChildren<Camera>().enabled = true;
+         GameObject cminput = CamSocket.GetComponentInChildren<CinemachineVirtualCamera>().gameObject;
+         // Init.playerid = 
+         //cminput.GetComponent<CinemachineInputProvider>().PlayerIndex= -1;
 
 
 
@@ -70,43 +83,58 @@ public class PlayerBallMulti : NetworkBehaviour
 
     private void Update()
     {
+
         // Set the camera's active state based on whether this player is the local player
         if (IsLocalPlayer)
         {
-            Debug.Log("Enabling camera for local player");
+            // Debug.Log("Enabling camera for local player");
             GetComponentInChildren<Camera>().enabled = true;
             mainCamera = GetComponentInChildren<Camera>().transform;
+            GetComponentInChildren<Camera>().gameObject.SetActive(true);
         }
         else
         {
-            Debug.Log("Disabling camera for remote player");
+            //Debug.Log("Disabling camera for remote player");
             GetComponentInChildren<Camera>().enabled = false;
             //GetComponentInChildren<Camera>().gameObject.SetActive(false);
-            GetComponentInChildren<CinemachineFreeLook>().gameObject.SetActive(false);
+            GetComponentInChildren<CinemachineVirtualCamera>().gameObject.SetActive(false);
             GetComponentInChildren<Camera>().gameObject.SetActive(false);
 
         }
     }
     void FixedUpdate()
     {
-        Vector2 direction = inputActions.CharacterControls.Movement.ReadValue<Vector2>();
+
+
+
 
         if (IsServer && IsLocalPlayer)
         {
-            GroundCheck();
-            MoveBall(direction);
+            HandleMovementServerAuth();
+
+           /* if (inputActions.CharacterControls.Movement.inProgress)
+            {
+                Vector2 direction = inputActions.CharacterControls.Movement.ReadValue<Vector2>();
+                MoveBall(direction);
+            }*/
+               // GroundCheck();
 
 
         }
         else if (IsLocalPlayer)
         {
+            HandleMovementServerAuth();
+
+           /* PingServerRpc();
             if (inputActions.CharacterControls.Movement.inProgress)
             {
-
-                
+                Vector2 direction = inputActions.CharacterControls.Movement.ReadValue<Vector2>();
+                Debug.Log("client movement" + direction);
                 MoveBallServerRPC(direction);
-            }
-                GroundCheckServerRPC();
+                TestClientRpc();
+                TestServerRpc();
+            }*/
+           // GroundCheckServerRpc();
         }
 
         CamSocket.GetComponentInChildren<Camera>().enabled = true;
@@ -114,6 +142,7 @@ public class PlayerBallMulti : NetworkBehaviour
 
     private void MoveBall(Vector2 direction)
     {
+        Debug.Log("regual movement" + direction);
         if (direction.magnitude > 0)
         {
             if (!isGroundedBall)
@@ -131,6 +160,7 @@ public class PlayerBallMulti : NetworkBehaviour
                 // Increase the fall speed while in air
                 rb.AddForce(0, -speed, 0);
 
+
             }
             else
             {
@@ -140,6 +170,7 @@ public class PlayerBallMulti : NetworkBehaviour
                 moveDirection = mainCamera.TransformDirection(moveDirection);
                 moveDirection.y = 0;
                 moveDirection = moveDirection.normalized;
+
 
                 // Move the ball in the direction
                 rb.AddForce(moveDirection * speed);
@@ -156,8 +187,10 @@ public class PlayerBallMulti : NetworkBehaviour
         rb.AddForce(0, Physics.gravity.y * rb.mass, 0, ForceMode.Force);
     }
 
+
     private void GroundCheck()
     {
+        Debug.Log("Ground check server");
         foreach (Vector3 direction in groundCheckDirections)
         {
             RaycastHit hitInfo;
@@ -178,8 +211,9 @@ public class PlayerBallMulti : NetworkBehaviour
     }
 
     [ServerRpc]
-    private void GroundCheckServerRPC()
+    private void GroundCheckServerRpc()
     {
+        Debug.Log("client ground check");
         foreach (Vector3 direction in groundCheckDirections)
         {
             RaycastHit hitInfo;
@@ -199,26 +233,133 @@ public class PlayerBallMulti : NetworkBehaviour
         }
     }
 
-    [ServerRpc]
+    [ServerRpc(RequireOwnership = false)]
     private void MoveBallServerRPC(Vector2 direction)
     {
-        MoveBall(direction);
-    }
-
-    public override void OnNetworkSpawn()
-    {
-         cvm = CamSocket.gameObject.GetComponentInChildren<CinemachineFreeLook>();
-        GetComponent<CinemachineInputProvider>().PlayerIndex = Random.Range(1, 100);
-
-        if (IsOwner)
+        Debug.Log("clientrpc" + direction);
+        if (direction.magnitude > 0)
         {
-            cvm.Priority = 1;
-            Debug.Log("cvm set 1");
+            if (!isGroundedBall)
+            {
+                // adds air control
+                Vector3 moveDirection = new Vector3(direction.x, 0, direction.y);
+                moveDirection.y = speed;
+                moveDirection = moveDirection.normalized;
+
+                rb.AddForce(moveDirection.x * speed / 2, 0, moveDirection.z * speed / 2);
+
+                //to add air resistance
+                rb.AddForce(-rb.velocity.x * drag / 2, 0, -rb.velocity.z * drag / 2);
+
+                // Increase the fall speed while in air
+                rb.AddForce(0, -speed, 0);
+
+
+            }
+            else
+            {
+                Vector3 moveDirection = new Vector3(direction.x, 0, direction.y);
+
+                // Rotate the direction vector to match the forward direction of the camera
+                moveDirection = mainCamera.TransformDirection(moveDirection);
+                moveDirection.y = 0;
+                moveDirection = moveDirection.normalized;
+
+
+                // Move the ball in the direction
+                rb.AddForce(moveDirection * speed);
+            }
 
         }
         else
         {
-            cvm.Priority = 0;
+            // Apply drag force to slow the ball down
+            rb.AddForce(-rb.velocity.x * drag, -speed, -rb.velocity.z * drag);
         }
+
+        // Apply force once per fixed update
+        rb.AddForce(0, Physics.gravity.y * rb.mass, 0, ForceMode.Force);
+
     }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void PingServerRpc()
+    {
+        Debug.Log("Ping");
+        isLocalClient = true;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void TestServerRpc()
+    {
+        Debug.Log("server");
+        // Destroy(gameObject);
+    }
+
+    [ClientRpc]
+    public void TestClientRpc()
+    {
+        Debug.Log("client");
+        // Destroy(gameObject);
+    }
+
+
+    private void HandleMovementServerAuth()
+    {
+        Vector2 direction = inputActions.CharacterControls.Movement.ReadValue<Vector2>();
+        HandleMovementServerRPC(direction);
+        GroundCheckServerRpc();
+
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    private void HandleMovementServerRPC(Vector2 direction)
+    {
+        Debug.Log("regual movement" + direction);
+        if (direction.magnitude > 0)
+        {
+            if (!isGroundedBall)
+            {
+                // adds air control
+                Vector3 moveDirection = new Vector3(direction.x, 0, direction.y);
+                moveDirection.y = speed;
+                moveDirection = moveDirection.normalized;
+
+                rb.AddForce(moveDirection.x * speed / 2, 0, moveDirection.z * speed / 2);
+
+                //to add air resistance
+                rb.AddForce(-rb.velocity.x * drag / 2, 0, -rb.velocity.z * drag / 2);
+
+                // Increase the fall speed while in air
+                rb.AddForce(0, -speed, 0);
+
+
+            }
+            else
+            {
+                Vector3 moveDirection = new Vector3(direction.x, 0, direction.y);
+
+                // Rotate the direction vector to match the forward direction of the camera
+                moveDirection = mainCamera.TransformDirection(moveDirection);
+                moveDirection.y = 0;
+                moveDirection = moveDirection.normalized;
+                Debug.Log(moveDirection);
+
+
+                // Move the ball in the direction
+                rb.AddForce(moveDirection * speed);
+            }
+
+        }
+        else
+        {
+            // Apply drag force to slow the ball down
+            rb.AddForce(-rb.velocity.x * drag, -speed, -rb.velocity.z * drag);
+        }
+
+        // Apply force once per fixed update
+        rb.AddForce(0, Physics.gravity.y * rb.mass, 0, ForceMode.Force);
+    }
+
+
 }
