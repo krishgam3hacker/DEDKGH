@@ -37,7 +37,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Look"",
+                    ""name"": ""Looke"",
                     ""type"": ""Value"",
                     ""id"": ""753819b3-d336-4688-97df-058413455b63"",
                     ""expectedControlType"": ""Vector2"",
@@ -233,7 +233,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
-                    ""action"": ""Look"",
+                    ""action"": ""Looke"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -244,7 +244,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""KeyboardMouse"",
-                    ""action"": ""Look"",
+                    ""action"": ""Looke"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -255,7 +255,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
-                    ""action"": ""Look"",
+                    ""action"": ""Looke"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -383,7 +383,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         // CharacterControls
         m_CharacterControls = asset.FindActionMap("CharacterControls", throwIfNotFound: true);
         m_CharacterControls_Movement = m_CharacterControls.FindAction("Movement", throwIfNotFound: true);
-        m_CharacterControls_Look = m_CharacterControls.FindAction("Look", throwIfNotFound: true);
+        m_CharacterControls_Looke = m_CharacterControls.FindAction("Looke", throwIfNotFound: true);
         m_CharacterControls_Boost = m_CharacterControls.FindAction("Boost", throwIfNotFound: true);
         m_CharacterControls_Jump = m_CharacterControls.FindAction("Jump", throwIfNotFound: true);
         m_CharacterControls_Track = m_CharacterControls.FindAction("Track", throwIfNotFound: true);
@@ -448,7 +448,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_CharacterControls;
     private ICharacterControlsActions m_CharacterControlsActionsCallbackInterface;
     private readonly InputAction m_CharacterControls_Movement;
-    private readonly InputAction m_CharacterControls_Look;
+    private readonly InputAction m_CharacterControls_Looke;
     private readonly InputAction m_CharacterControls_Boost;
     private readonly InputAction m_CharacterControls_Jump;
     private readonly InputAction m_CharacterControls_Track;
@@ -458,7 +458,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
         private @PlayerInputActions m_Wrapper;
         public CharacterControlsActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_CharacterControls_Movement;
-        public InputAction @Look => m_Wrapper.m_CharacterControls_Look;
+        public InputAction @Looke => m_Wrapper.m_CharacterControls_Looke;
         public InputAction @Boost => m_Wrapper.m_CharacterControls_Boost;
         public InputAction @Jump => m_Wrapper.m_CharacterControls_Jump;
         public InputAction @Track => m_Wrapper.m_CharacterControls_Track;
@@ -475,9 +475,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Movement.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMovement;
                 @Movement.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMovement;
                 @Movement.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMovement;
-                @Look.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnLook;
-                @Look.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnLook;
-                @Look.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnLook;
+                @Looke.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnLooke;
+                @Looke.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnLooke;
+                @Looke.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnLooke;
                 @Boost.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnBoost;
                 @Boost.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnBoost;
                 @Boost.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnBoost;
@@ -497,9 +497,9 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
                 @Movement.started += instance.OnMovement;
                 @Movement.performed += instance.OnMovement;
                 @Movement.canceled += instance.OnMovement;
-                @Look.started += instance.OnLook;
-                @Look.performed += instance.OnLook;
-                @Look.canceled += instance.OnLook;
+                @Looke.started += instance.OnLooke;
+                @Looke.performed += instance.OnLooke;
+                @Looke.canceled += instance.OnLooke;
                 @Boost.started += instance.OnBoost;
                 @Boost.performed += instance.OnBoost;
                 @Boost.canceled += instance.OnBoost;
@@ -537,7 +537,7 @@ public partial class @PlayerInputActions : IInputActionCollection2, IDisposable
     public interface ICharacterControlsActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnLook(InputAction.CallbackContext context);
+        void OnLooke(InputAction.CallbackContext context);
         void OnBoost(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnTrack(InputAction.CallbackContext context);

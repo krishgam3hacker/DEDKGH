@@ -51,6 +51,11 @@ public class GoaliScore : MonoBehaviour
     {
 
         Debug.Log("Round  Reset");
+
+        //players reset to original spawn points
+        // goali spawn in SpawnPOint
+
+
         //GameModeManager.instance.OnPointScored() return;
 
         //Game should Reset

@@ -71,7 +71,7 @@ public class RollingBallM : NetworkBehaviour
     void Update()
     {
         Vector2 direction = inputActions.CharacterControls.Movement.ReadValue<Vector2>();
-        Vector2 lookInput = inputActions.CharacterControls.Look.ReadValue<Vector2>();
+        Vector2 lookInput = inputActions.CharacterControls.Looke.ReadValue<Vector2>();
 
         if (IsClient && IsLocalPlayer)
         {
