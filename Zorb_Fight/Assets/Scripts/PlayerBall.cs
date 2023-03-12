@@ -1,4 +1,5 @@
 using Cinemachine;
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -8,8 +9,9 @@ using UnityEngine.InputSystem;
 public class PlayerBall : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private PlayerInputActions inputActions;
+
     [SerializeField] public Transform cmcam;
+    private Vector2 direction;
 
     #region Ground Checks
     [Header("Ground Check")]
@@ -29,34 +31,43 @@ public class PlayerBall : MonoBehaviour
     #endregion
 
 
+    [SerializeField] private PlayerInputActions inputActions;
+
 
 
     void Start()
     {
-        rb = GetComponentInChildren<Rigidbody>();
-        rb.isKinematic = false;
+
         inputActions = new PlayerInputActions();
         inputActions.Enable();
+
+        rb = GetComponentInChildren<Rigidbody>();
+        rb.isKinematic = false;
+
         cmcam = Camera.main.transform;
-
-
+        Cursor.lockState = CursorLockMode.Locked;
+        CinemachineFreeLook cvm = cmcam.gameObject.GetComponentInChildren<CinemachineFreeLook>();
     }
+
+
 
     private void Update()
     {
 
-
     }
     void FixedUpdate()
     {
-        Vector2 direction = inputActions.CharacterControls.Movement.ReadValue<Vector2>();
+        
         GroundCheck();
+        JumpCheck();
         MoveBall(direction);
 
     }
 
-    private void MoveBall(Vector2 direction)
+
+    public void MoveBall(Vector2 direction)
     {
+        Debug.Log("regual movement" + direction);
         if (direction.magnitude > 0)
         {
             if (!isGroundedBall)
@@ -120,11 +131,31 @@ public class PlayerBall : MonoBehaviour
         }
     }
 
-
-private void CamAssign()
+    private void JumpCheck()
     {
-        CinemachineVirtualCamera cvm = cmcam.gameObject.GetComponentInChildren<CinemachineVirtualCamera>();
+        //check if player is jumping
+        if (inputActions.CharacterControls.Jump.triggered)
+        {
+            if (isGroundedBall)
+            {
 
+                Vector3 jumpDirection = rb.velocity.normalized;
+                jumpDirection.y = yForce;
+                GetComponentInChildren<Rigidbody>().AddForce(jumpDirection);
+            }
+            else
+            {
+                return;
+            }
+        }
 
     }
+
+    public void OnMovement(InputAction.CallbackContext value)
+    {
+        direction = value.ReadValue<Vector2>();
+    }
+
+ 
+
 }

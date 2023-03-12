@@ -58,7 +58,7 @@ public class RollingBall2 : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 direction = inputActions.CharacterControls.Movement.ReadValue<Vector2>();
-         MoveBall(direction);
+        MoveBall(direction);
     }
 
 private void MoveBall(Vector2 direction)

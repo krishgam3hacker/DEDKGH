@@ -1,42 +1,47 @@
-using System.Collections;
+using Cinemachine;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+
 
 public class GameManager1 : MonoBehaviour
 {
 
    [SerializeField] private static GameManager1 instance;
 
-    [SerializeField] GameObject Manager;
+    private List<PlayerInput> players = new List<PlayerInput>();
+    [SerializeField]
+    private List<Transform> startingPoints;
+    [SerializeField]
+    private List<LayerMask> playerLayers;
+
+    [SerializeField] private PlayerInputManager playerInputManager;
 
 
     [SerializeField]
     int fps = 70;
-    // Start is called before the first frame update
+
     void Start()
     {
         // Make the game run as fast as possible
         Application.targetFrameRate = fps;
-    }
-
-    private void Awake()
-    {
-
-
-        // Otherwise, set this instance as the only instance
-      /*  instance = this;
-        DontDestroyOnLoad(Manager);*/
 
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+     
     }
 
+    public void AddPlayer(PlayerInput player)
+    {
+        players.Add(player);
+
+        //
+        Transform playerParent= player.transform.parent;
+        playerParent.position = startingPoints[players.Count - 1].position;
+    }
 
 
 
