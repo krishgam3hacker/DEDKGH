@@ -6,8 +6,8 @@ using UnityEngine.InputSystem;
 
 public class GameManager1 : MonoBehaviour
 {
-
-   [SerializeField] private static GameManager1 instance;
+    public float respawnDelay = 5f;
+    [SerializeField] private static GameManager1 instance;
 
     private List<PlayerInput> players = new List<PlayerInput>();
 
@@ -21,6 +21,9 @@ public class GameManager1 : MonoBehaviour
 
     public List<LayerMask> playerLayers;
 
+
+    public GameObject goaliPrefab;
+    public Transform goaliSpawnLocation;
 
     void Start()
     {
@@ -69,7 +72,33 @@ public class GameManager1 : MonoBehaviour
 
     }
 
+    public void RespawnBallAndPlayers(float respawnDelay)
+    {
 
+        Debug.Log("Round  Reset");
+
+        //players reset to original spawn points
+
+        foreach(PlayerInput player in players)
+        {
+            player.gameObject.GetComponent<PlayerDetails>().SpawnPlayerBall();
+            Debug.Log("player rest");
+        }
+
+
+        //find all players
+        //tell them to reset location
+
+
+
+        // goali spawn in SpawnPOint
+        Vector3 goaliSpawn = goaliSpawnLocation.position;
+        Instantiate(goaliPrefab, goaliSpawn, Quaternion.identity);
+
+
+        
+
+    }
 
 
 
