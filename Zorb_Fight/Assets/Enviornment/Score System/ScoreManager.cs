@@ -47,7 +47,11 @@ public class ScoreManager : MonoBehaviour
     {
         // Do something when the timer runs out (e.g. end the game)
         Debug.Log("Time's up!");
+
+        //finish game and show Score
         SceneManager.LoadScene("Test");
+
+        //after score show button to go back to menu for new game
     }
 
     public void IncrementScore(string team)
