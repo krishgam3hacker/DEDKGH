@@ -83,7 +83,7 @@ public class PlayerBall : MonoBehaviour
 
     public void MoveBall(Vector2 direction)
     {
-        Debug.Log("regual movement" + direction);
+
         if (direction.magnitude > 0)
         {
             if (!isGroundedBall)
