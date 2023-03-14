@@ -1,18 +1,21 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms;
 
 public class ScoreManager : MonoBehaviour
 {
     public int redScore;
     public int blueScore;
-
+    public GameObject gameOverUI;
     public float timeLimit = 60f; // The time limit for the timer
     public TextMeshProUGUI timerText; // The Text component to display the timer
     private GameObject MT;
 
     private float currentTime; // The current time remaining on the timer
-
+    float respawnDelay = 15f;
     private void Start()
     {
         currentTime = timeLimit;
@@ -49,9 +52,12 @@ public class ScoreManager : MonoBehaviour
         Debug.Log("Time's up!");
 
         //finish game and show Score
-        SceneManager.LoadScene("Test");
+        gameOverUI.SetActive(true);
+        Time.timeScale = 0f;
+
 
         //after score show button to go back to menu for new game
+        StartCoroutine(Wait(respawnDelay));
     }
 
     public void IncrementScore(string team)
@@ -72,6 +78,16 @@ public class ScoreManager : MonoBehaviour
         blueScore = 0;
     }
 
+    IEnumerator Wait(float respawnDelay)
+    {
+        //Wait for the specified delay time before continuing.
+        yield return new WaitForSeconds(respawnDelay);
+        //Do the action after the delay time has finished.
+        Debug.Log("Finished waiting");
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("MainMenu");
+
+    }
 
 
 }

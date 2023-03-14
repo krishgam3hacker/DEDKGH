@@ -2,23 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
+    [SerializeField] private PlayerInputActions inputActions;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        inputActions = new PlayerInputActions();
+        inputActions.Enable();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if (inputActions.CharacterControls.Pause.triggered)
         {
             if(GameIsPaused)
             {
