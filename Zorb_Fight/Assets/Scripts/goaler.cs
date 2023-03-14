@@ -30,7 +30,9 @@ public class goaler : MonoBehaviour
 
     // When a collision occurs, double the force applied to the ball
     void OnCollisionEnter(Collision collision) {
-        if (collision.gameObject.tag == "Player") {
+        if (collision.gameObject.tag == "Player") 
+        {
+            FindObjectOfType<AudioManager>().Play("PlayerHit");
             Vector3 force = collision.impulse * forceMultiplier;
             rb.AddForce(force, ForceMode.Impulse);
         }

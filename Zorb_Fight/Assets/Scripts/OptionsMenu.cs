@@ -44,6 +44,8 @@ public class OptionsMenu : MonoBehaviour
     }
     public void SetVolume(float volume)
     {
+        FindObjectOfType<AudioManager>().Play("Click");
+
         Debug.Log(volume);
         mixer.SetFloat("volumeMaster", volume);
 
@@ -52,6 +54,8 @@ public class OptionsMenu : MonoBehaviour
     [SerializeField] private UniversalRenderPipelineAsset _myPipeline;
     public void SetQuality(int qualityIndex)
     {
+        FindObjectOfType<AudioManager>().Play("Click");
+
         QualitySettings.SetQualityLevel(qualityIndex);
         Debug.Log(qualityIndex);
 
@@ -62,10 +66,14 @@ public class OptionsMenu : MonoBehaviour
     public void SetFullScreen(bool isFullscreen)
     {
         Screen.fullScreen = isFullscreen;
+        FindObjectOfType<AudioManager>().Play("Click");
+
     }
 
     public void SetResolution(int resolutionIndex)
     {
+        FindObjectOfType<AudioManager>().Play("Click");
+
         Resolution resoltuion = resolutions[resolutionIndex];
         Screen.SetResolution(resoltuion.width, resoltuion.height, Screen.fullScreen);
     }
@@ -73,32 +81,40 @@ public class OptionsMenu : MonoBehaviour
     public void CloseOptions()
     {
         optionsMenuUI.SetActive(false);
+        FindObjectOfType<AudioManager>().Play("Click");
 
     }
     public void OpenOptions()
     {
         optionsMenuUI.SetActive(true);
+        FindObjectOfType<AudioManager>().Play("Click");
 
     }
 
     public void CloseCredits()
     {
         creditsMenuUI.SetActive(false);
+        FindObjectOfType<AudioManager>().Play("Click");
 
     }
     public void OpenCredits()
     {
         creditsMenuUI.SetActive(true);
+        FindObjectOfType<AudioManager>().Play("Click");
 
     }
 
     public void PlayGame()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
+
         Time.timeScale = 1f;
         SceneManager.LoadSceneAsync("MainGame");
     }
     public void QuitGame()
     {
+        FindObjectOfType<AudioManager>().Play("Click");
+
         Debug.Log("quit game");
         Application.Quit();
     }

@@ -1,5 +1,6 @@
 using Cinemachine;
 using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
@@ -33,7 +34,7 @@ public class PlayerBall : MonoBehaviour
 
     [SerializeField] private PlayerInputActions inputActions;
 
-
+    [SerializeField] AudioSource playerSpeaker;
 
     void Start()
     {
@@ -49,6 +50,8 @@ public class PlayerBall : MonoBehaviour
        Cursor.visible= false;
         
         CinemachineFreeLook cvm = cmcam.gameObject.GetComponentInChildren<CinemachineFreeLook>();
+
+        playerSpeaker = GetComponent<AudioSource>();
     }
 
 
@@ -63,9 +66,20 @@ public class PlayerBall : MonoBehaviour
         GroundCheck();
         JumpCheck();
         MoveBall(direction);
-
+        AudioCheck();
     }
 
+    private void AudioCheck()
+    {
+        if(rb.velocity == Vector3.zero)
+        {
+            playerSpeaker.volume = 0f;
+        }
+        else
+        {
+            playerSpeaker.volume = 0.3f;
+        }
+    }
 
     public void MoveBall(Vector2 direction)
     {
@@ -160,6 +174,15 @@ public class PlayerBall : MonoBehaviour
         direction = value.ReadValue<Vector2>();
     }
 
- 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            FindObjectOfType<AudioManager>().Play("PlayerHit");
+            Debug.Log("collider");
+        }
+    }
+
+
 
 }
