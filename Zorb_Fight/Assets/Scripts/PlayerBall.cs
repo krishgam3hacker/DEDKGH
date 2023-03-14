@@ -45,7 +45,8 @@ public class PlayerBall : MonoBehaviour
         rb.isKinematic = false;
 
         cmcam = GetComponentInChildren<Camera>().transform;
-        Cursor.lockState = CursorLockMode.Locked;
+       // Cursor.lockState = CursorLockMode.Locked;
+       Cursor.visible= false;
         
         CinemachineFreeLook cvm = cmcam.gameObject.GetComponentInChildren<CinemachineFreeLook>();
     }

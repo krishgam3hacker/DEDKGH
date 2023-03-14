@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class OptionsMenu : MonoBehaviour
@@ -10,6 +11,10 @@ public class OptionsMenu : MonoBehaviour
     public AudioMixer mixer;
 
     public TMP_Dropdown resolutionDropdown;
+
+    public GameObject optionsMenuUI;
+   [SerializeField] private bool optionmenuopen = false;
+    public GameObject creditsMenuUI;
 
     Resolution[] resolutions;
 
@@ -56,5 +61,32 @@ public class OptionsMenu : MonoBehaviour
     {
         Resolution resoltuion = resolutions[resolutionIndex];
         Screen.SetResolution(resoltuion.width, resoltuion.height, Screen.fullScreen);
+    }
+
+    public void CloseOptions()
+    {
+        optionsMenuUI.SetActive(false);
+
+    }
+    public void OpenOptions()
+    {
+        optionsMenuUI.SetActive(true);
+
+    }
+
+    public void CloseCredits()
+    {
+        creditsMenuUI.SetActive(false);
+
+    }
+    public void OpenCredits()
+    {
+        creditsMenuUI.SetActive(true);
+
+    }
+
+    public void PlayGame()
+    {
+        SceneManager.LoadSceneAsync("MainGame");
     }
 }
