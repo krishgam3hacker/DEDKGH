@@ -15,9 +15,9 @@ public class PlayerBall : MonoBehaviour
 
     #region Ground Checks
     [Header("Ground Check")]
-    public float raycastLength = 1f;
+    public float raycastLength = 1.1f;
     [SerializeField] private string groundTag = "Ground";
-    [SerializeField] public bool isGroundedBall;
+    [SerializeField] public bool isGroundedBall = false;
     public Transform raycastStart;
     // Directions to check for ground
     public Vector3[] groundCheckDirections = { Vector3.down, Vector3.up, Vector3.left, Vector3.right, Vector3.forward, Vector3.back };
@@ -129,6 +129,7 @@ public class PlayerBall : MonoBehaviour
             else
             {
                 Debug.DrawRay(raycastStart.position, direction * raycastLength, Color.red);
+                isGroundedBall = false;
             }
         }
     }
@@ -140,13 +141,14 @@ public class PlayerBall : MonoBehaviour
         {
             if (isGroundedBall)
             {
-
+                Debug.Log(isGroundedBall);
                 Vector3 jumpDirection = rb.velocity.normalized;
                 jumpDirection.y = yForce;
                 GetComponentInChildren<Rigidbody>().AddForce(jumpDirection);
             }
             else
             {
+                Debug.Log(isGroundedBall + "should not jump");
                 return;
             }
         }

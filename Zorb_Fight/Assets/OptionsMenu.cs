@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -47,9 +48,15 @@ public class OptionsMenu : MonoBehaviour
         mixer.SetFloat("volumeMaster", volume);
 
     }
+
+    [SerializeField] private UniversalRenderPipelineAsset _myPipeline;
     public void SetQuality(int qualityIndex)
     {
         QualitySettings.SetQualityLevel(qualityIndex);
+        Debug.Log(qualityIndex);
+
+        _myPipeline.shadowDistance = 10;
+        
     }
 
     public void SetFullScreen(bool isFullscreen)
@@ -88,5 +95,10 @@ public class OptionsMenu : MonoBehaviour
     public void PlayGame()
     {
         SceneManager.LoadSceneAsync("MainGame");
+    }
+    public void QuitGame()
+    {
+        Debug.Log("quit game");
+        Application.Quit();
     }
 }
