@@ -1,4 +1,5 @@
 using Cinemachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -72,35 +73,36 @@ public class GameManager1 : MonoBehaviour
 
     }
 
-    public void RespawnBallAndPlayers(float respawnDelay)
+    public void RespawnBallAndPlayers(float respawnDelays)
     {
+        respawnDelays = respawnDelay;
+        StartCoroutine(Wait(respawnDelays));
+
 
         Debug.Log("Round  Reset");
 
-        //players reset to original spawn points
+    }
 
-        foreach(PlayerInput player in players)
+    IEnumerator Wait(float respawnDelays)
+    {
+        //Wait for the specified delay time before continuing.
+        yield return new WaitForSeconds(respawnDelays);
+        //Do the action after the delay time has finished.
+        Debug.Log("Finished waiting");
+
+        //find all players
+        foreach (PlayerInput player in players)
         {
             player.gameObject.GetComponent<PlayerDetails>().SpawnPlayerBall();
             Debug.Log("player rest");
+            //players reset to original spawn points
         }
-
-
-        //find all players
-        //tell them to reset location
-
-
 
         // goali spawn in SpawnPOint
         Vector3 goaliSpawn = goaliSpawnLocation.position;
         Instantiate(goaliPrefab, goaliSpawn, Quaternion.identity);
 
-
-        
-
     }
-
-
 
 
 
