@@ -5,6 +5,15 @@ using UnityEngine;
 public static class scr_Models
 {
     #region - Player _
+
+    public enum PlayerStance
+    {
+        Stand,
+        Crouch,
+        Prone
+    }
+
+
     [Serializable]
     public class PLayerSettingModel
     {
@@ -24,6 +33,14 @@ public static class scr_Models
         public float JumpingHeight;
         public float JumpingFalloff;
         
+    }
+
+    [Serializable]
+    public class CharacterStance
+    {   
+        public float CameraHeight;
+        public  CapsuleCollider StanceColloider;
+
     }
     
     #endregion
