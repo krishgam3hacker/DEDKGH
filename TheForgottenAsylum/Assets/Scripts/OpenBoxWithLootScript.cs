@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenBoxScript : MonoBehaviour
+public class OpenBoxWithLootScript : MonoBehaviour
 {
     public Animator boxOB;
     public GameObject keyOBNeeded;
@@ -10,13 +10,23 @@ public class OpenBoxScript : MonoBehaviour
     public GameObject keyMissingText;
     public AudioSource openSound;
 
+    public GameObject drop1;
+    public GameObject drop2;
+    public GameObject drop3;
+    public GameObject drop4;
+    public GameObject drop5;
+    public GameObject drop6;
+
     public bool inReach;
     public bool isOpen;
+
+    public int randomNumber;
 
 
 
     void Start()
     {
+        randomNumber = Random.Range(0, 5);
         inReach = false;
         openText.SetActive(false);
         keyMissingText.SetActive(false);
@@ -54,6 +64,36 @@ public class OpenBoxScript : MonoBehaviour
             openText.SetActive(false);
             keyMissingText.SetActive(false);
             isOpen = true;
+
+            if (randomNumber == 0 )
+            {
+                drop1.SetActive(true);
+            }
+
+            if (randomNumber == 1)
+            {
+                drop2.SetActive(true);
+            }
+
+            if (randomNumber == 2)
+            {
+                drop3.SetActive(true);
+            }
+
+            if (randomNumber == 3)
+            {
+                drop4.SetActive(true);
+            }
+
+            if (randomNumber == 4)
+            {
+                drop5.SetActive(true);
+            }
+
+            if (randomNumber == 5)
+            {
+                drop6.SetActive(true);
+            }
         }
 
         else if (keyOBNeeded.activeInHierarchy == false && inReach && Input.GetButtonDown("Interact"))
