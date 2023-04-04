@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Doors : MonoBehaviour
 {
     public Animator door;
     public GameObject openText;
+    public GameObject closeText;
 
-    public AudioSource doorSound;
+    public AudioSource openSound;
+    public AudioSource closeSound;
 
 
     public bool inReach;
+    private bool doorisOpen;
+    private bool doorisClosed;
 
 
 
@@ -18,14 +23,24 @@ public class Doors : MonoBehaviour
     void Start()
     {
         inReach = false;
+        doorisClosed = true;
+        doorisOpen = false;
+        closeText.SetActive(false);
+        openText.SetActive(false);
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Reach")
+        if (other.gameObject.tag == "Reach" && doorisClosed)
         {
             inReach = true;
             openText.SetActive(true);
+        }
+
+        if (other.gameObject.tag == "Reach" && doorisOpen)
+        {
+            inReach = true;
+            closeText.SetActive(true);
         }
     }
 
@@ -35,6 +50,7 @@ public class Doors : MonoBehaviour
         {
             inReach = false;
             openText.SetActive(false);
+            closeText.SetActive(false);
         }
     }
 
@@ -45,34 +61,31 @@ public class Doors : MonoBehaviour
     void Update()
     {
 
-        if (inReach && Input.GetButtonDown("Interact"))
+
+
+        if (inReach && doorisClosed && Input.GetButtonDown("Interact"))
         {
-            DoorOpens();
+
+            door.SetBool("Open", true);
+            door.SetBool("Closed", false);
+            openText.SetActive(false);
+            openSound.Play();
+            doorisOpen = true;
+            doorisClosed = false;
         }
-        else
+        else if (inReach && doorisOpen && Input.GetButtonDown("Interact"))
         {
-            DoorCloses();
+            door.SetBool("Open", false);
+            door.SetBool("Closed", true);
+            closeText.SetActive(false);
+            closeSound.Play();
+            doorisClosed = true;
+            doorisOpen = false;
         }
 
 
-
-
-    }
-    void DoorOpens ()
-    {
-        Debug.Log("It Opens");
-        door.SetBool("Open", true);
-        door.SetBool("Closed", false);
-        doorSound.Play();
-
     }
 
-    void DoorCloses()
-    {
-        Debug.Log("It Closes");
-        door.SetBool("Open", false);
-        door.SetBool("Closed", true);
-    }
 
 
 }
