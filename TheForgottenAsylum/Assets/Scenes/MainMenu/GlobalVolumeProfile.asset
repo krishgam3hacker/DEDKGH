@@ -17,8 +17,8 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 0.78
   contrast:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: -3
   colorFilter:
     m_OverrideState: 0
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -26,6 +26,52 @@ MonoBehaviour:
     m_OverrideState: 0
     m_Value: 50
   saturation:
+    m_OverrideState: 1
+    m_Value: -9
+--- !u!114 &-7006879870597611146
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01700fd266d6914ababb731e09af2eb, type: 3}
+  m_Name: DepthOfField
+  m_EditorClassIdentifier: 
+  active: 1
+  mode:
+    m_OverrideState: 0
+    m_Value: 0
+  gaussianStart:
+    m_OverrideState: 0
+    m_Value: 10
+  gaussianEnd:
+    m_OverrideState: 0
+    m_Value: 30
+  gaussianMaxRadius:
+    m_OverrideState: 0
+    m_Value: 1
+  highQualitySampling:
+    m_OverrideState: 0
+    m_Value: 0
+  focusDistance:
+    m_OverrideState: 0
+    m_Value: 10
+  aperture:
+    m_OverrideState: 0
+    m_Value: 5.6
+  focalLength:
+    m_OverrideState: 0
+    m_Value: 50
+  bladeCount:
+    m_OverrideState: 0
+    m_Value: 5
+  bladeCurvature:
+    m_OverrideState: 0
+    m_Value: 1
+  bladeRotation:
     m_OverrideState: 0
     m_Value: 0
 --- !u!114 &-32820517437979890
@@ -46,10 +92,10 @@ MonoBehaviour:
     m_Value: 0.9
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 1.29
   scatter:
     m_OverrideState: 0
-    m_Value: 0.7
+    m_Value: 1
   clamp:
     m_OverrideState: 0
     m_Value: 65472
@@ -61,14 +107,14 @@ MonoBehaviour:
     m_Value: 0
   skipIterations:
     m_OverrideState: 0
-    m_Value: 1
+    m_Value: 7
   dirtTexture:
     m_OverrideState: 1
-    m_Value: {fileID: 2800000, guid: 911a490568cce1b44ae7c6f1cc347239, type: 3}
+    m_Value: {fileID: 2800000, guid: 7196dd42650b03a4387ea4d2964b23ce, type: 3}
     dimension: 1
   dirtIntensity:
     m_OverrideState: 1
-    m_Value: 0.62
+    m_Value: 10
 --- !u!114 &-8521674740473099
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -90,7 +136,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.429
+    m_Value: 0.553
   smoothness:
     m_OverrideState: 0
     m_Value: 0.2
@@ -110,11 +156,12 @@ MonoBehaviour:
   m_Name: GlobalVolumeProfile
   m_EditorClassIdentifier: 
   components:
+  - {fileID: -8521674740473099}
   - {fileID: 1881579288749618558}
   - {fileID: -32820517437979890}
   - {fileID: 4320900226151941010}
-  - {fileID: -8521674740473099}
   - {fileID: -8783116689809515105}
+  - {fileID: -7006879870597611146}
 --- !u!114 &1881579288749618558
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -146,4 +193,4 @@ MonoBehaviour:
   active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 0.206
+    m_Value: 0.35
