@@ -9,14 +9,16 @@ public class HUD : MonoBehaviour
     public GameObject flashLightOB;
 
 
+    public Light light;
 
 
 
 
     void Start()
     {
+
         flashLightON.SetActive(false);
-        
+        light.enabled = false;
     }
 
 
@@ -24,12 +26,11 @@ public class HUD : MonoBehaviour
 
     void Update()
     {
-        if(flashLightOB.activeInHierarchy)
+        if (light.enabled == true)
         {
             flashLightON.SetActive(true);
             flashLightOFF.SetActive(false);
         }
-        
         else
         {
             flashLightON.SetActive(false);
