@@ -14,7 +14,6 @@ public class OptionsMenu : MonoBehaviour
     public TMP_Dropdown resolutionDropdown;
 
     public GameObject optionsMenuUI;
-   [SerializeField] private bool optionmenuopen = false;
     public GameObject creditsMenuUI;
     public GameObject mainMenuUI;
     public string SceneName;
@@ -77,8 +76,8 @@ public class OptionsMenu : MonoBehaviour
     {
         FindObjectOfType<AudioManager>().Play("Click");
 
-        Resolution resoltuion = resolutions[resolutionIndex];
-        Screen.SetResolution(resoltuion.width, resoltuion.height, Screen.fullScreen);
+        Resolution resolution = resolutions[resolutionIndex];
+        Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
     public void CloseOptions()
@@ -121,6 +120,8 @@ public class OptionsMenu : MonoBehaviour
         FindObjectOfType<AudioManager>().Play("Click");
 
         Time.timeScale = 1f;
+
+        StartCoroutine(LoadSceneAsync(SceneName));
         SceneManager.LoadSceneAsync(SceneName);
     }
     public void QuitGame()
@@ -130,4 +131,18 @@ public class OptionsMenu : MonoBehaviour
         Debug.Log("quit game");
         Application.Quit();
     }
+
+
+    IEnumerator LoadSceneAsync(string SceneName)
+    {
+        AsyncOperation operation =  SceneManager.LoadSceneAsync(SceneName);
+
+
+        while (!operation.isDone)
+        {
+            float progressValue = Mathf.Clamp01((operation.progress / 0.9f));
+            yield return null;
+        }
+    }
+    
 }

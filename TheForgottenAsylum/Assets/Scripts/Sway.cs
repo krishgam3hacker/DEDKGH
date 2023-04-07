@@ -9,11 +9,11 @@ public class Sway : MonoBehaviour
     public float maxAmount;
     public float smoothAmount;
 
-    private Vector3 initialPosition;
+    private Vector3 _initialPosition;
 
     void Start()
     {
-        initialPosition = transform.localPosition;
+        _initialPosition = transform.localPosition;
     }
 
 
@@ -25,7 +25,7 @@ public class Sway : MonoBehaviour
         movementY = Mathf.Clamp(movementY, -maxAmount, maxAmount);
 
         Vector3 finalPosition = new Vector3(movementX, movementY, 0);
-        transform.localPosition = Vector3.Lerp(transform.localPosition, finalPosition + initialPosition, Time.deltaTime * smoothAmount);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, finalPosition + _initialPosition, Time.deltaTime * smoothAmount);
     }
 }
        
