@@ -115,6 +115,15 @@ public class OptionsMenu : MonoBehaviour
 
     public string loadingScreenSceneName;
 
+
+    public void QuitGame()
+    {
+        FindObjectOfType<AudioManager>().Play("Click");
+
+        Debug.Log("quit game");
+        Application.Quit();
+    }
+    
     public void PlayGame()
     {
         FindObjectOfType<AudioManager>().Play("Click");
@@ -125,14 +134,6 @@ public class OptionsMenu : MonoBehaviour
         SceneManager.LoadSceneAsync(SceneName);
 
     }
-    public void QuitGame()
-    {
-        FindObjectOfType<AudioManager>().Play("Click");
-
-        Debug.Log("quit game");
-        Application.Quit();
-    }
-
     void OnDestroy()
     {
         SceneManager.UnloadSceneAsync(loadingScreenSceneName);
