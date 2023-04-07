@@ -113,7 +113,7 @@ public class OptionsMenu : MonoBehaviour
 
     }
 
-
+    public string loadingScreenSceneName;
 
     public void PlayGame()
     {
@@ -121,8 +121,9 @@ public class OptionsMenu : MonoBehaviour
 
         Time.timeScale = 1f;
 
-        StartCoroutine(LoadSceneAsync(SceneName));
+        SceneManager.LoadSceneAsync(loadingScreenSceneName, LoadSceneMode.Additive);
         SceneManager.LoadSceneAsync(SceneName);
+
     }
     public void QuitGame()
     {
@@ -132,17 +133,10 @@ public class OptionsMenu : MonoBehaviour
         Application.Quit();
     }
 
-
-    IEnumerator LoadSceneAsync(string SceneName)
+    void OnDestroy()
     {
-        AsyncOperation operation =  SceneManager.LoadSceneAsync(SceneName);
-
-
-        while (!operation.isDone)
-        {
-            float progressValue = Mathf.Clamp01((operation.progress / 0.9f));
-            yield return null;
-        }
+        SceneManager.UnloadSceneAsync(loadingScreenSceneName);
     }
+
     
 }
