@@ -8,6 +8,7 @@ public class Doors : MonoBehaviour
     public Animator door;
     public GameObject openText;
     public GameObject closeText;
+   [SerializeField] private GameObject _keypadObj;
 
     public AudioSource openSound;
     public AudioSource closeSound;
@@ -16,6 +17,9 @@ public class Doors : MonoBehaviour
     public bool inReach;
     private bool doorisOpen;
     private bool doorisClosed;
+    [SerializeField] private bool _isUsingKeypad;
+    public bool _keypadLocked;
+
 
 
 
@@ -27,6 +31,17 @@ public class Doors : MonoBehaviour
         doorisOpen = false;
         closeText.SetActive(false);
         openText.SetActive(false);
+
+        if (_keypadObj == null)
+        {
+            _isUsingKeypad = false;
+            _keypadLocked = false;
+        }
+        else
+        {
+            _isUsingKeypad = true;
+            _keypadLocked = true;
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -60,32 +75,55 @@ public class Doors : MonoBehaviour
 
     void Update()
     {
-
-
-
-        if (inReach && doorisClosed && Input.GetButtonDown("Interact"))
+        if (_isUsingKeypad == true && _keypadLocked == false)
         {
+            
+            if (inReach && doorisClosed && Input.GetButtonDown("Interact"))
+            {
 
-            door.SetBool("Open", true);
-            door.SetBool("Closed", false);
-            openText.SetActive(false);
-            openSound.Play();
-            doorisOpen = true;
-            doorisClosed = false;
+                door.SetBool("Open", true);
+                door.SetBool("Closed", false);
+                openText.SetActive(false);
+                openSound.Play();
+                doorisOpen = true;
+                doorisClosed = false;
+                Debug.Log("door opened");
+            }
+            else if (inReach && doorisOpen && Input.GetButtonDown("Interact"))
+            {
+                door.SetBool("Open", false);
+                door.SetBool("Closed", true);
+                closeText.SetActive(false);
+                closeSound.Play();
+                doorisClosed = true;
+                doorisOpen = false;
+                Debug.Log("door closed");
+            }
         }
-        else if (inReach && doorisOpen && Input.GetButtonDown("Interact"))
+        else if (_isUsingKeypad == false)
         {
-            door.SetBool("Open", false);
-            door.SetBool("Closed", true);
-            closeText.SetActive(false);
-            closeSound.Play();
-            doorisClosed = true;
-            doorisOpen = false;
+            if (inReach && doorisClosed && Input.GetButtonDown("Interact"))
+            {
+
+                door.SetBool("Open", true);
+                door.SetBool("Closed", false);
+                openText.SetActive(false);
+                openSound.Play();
+                doorisOpen = true;
+                doorisClosed = false;
+            }
+            else if (inReach && doorisOpen && Input.GetButtonDown("Interact"))
+            {
+                door.SetBool("Open", false);
+                door.SetBool("Closed", true);
+                closeText.SetActive(false);
+                closeSound.Play();
+                doorisClosed = true;
+                doorisOpen = false;
+            }
         }
+        
 
 
     }
-
-
-
 }

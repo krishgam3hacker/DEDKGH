@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.ProBuilder.Shapes;
 using UnityStandardAssets.Characters.FirstPerson;
 
 
@@ -26,10 +27,13 @@ public class Keypad : MonoBehaviour
     public AudioSource wrong;
 
     public bool animate;
+    public Doors doorSc;
+    
 
 
     void Start()
     {
+        
         keypadOB.SetActive(false);
 
     }
@@ -48,11 +52,13 @@ public class Keypad : MonoBehaviour
             correct.Play();
             textOB.text = "Right";
 
+
         }
         else
         {
             wrong.Play();
             textOB.text = "Wrong";
+
         }
 
 
@@ -79,7 +85,7 @@ public class Keypad : MonoBehaviour
         if (textOB.text == "Right" && animate)
         {
             ANI.SetBool("animate", true);
-            Debug.Log("its open");
+            doorSc._keypadLocked = false;
         }
 
 
