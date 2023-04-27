@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7912845089506849820}
   - component: {fileID: 1491757201126056035}
   - component: {fileID: 7684511868833977046}
+  - component: {fileID: 2462525628112095399}
   m_Layer: 0
   m_Name: ThreeWindow_Right
   m_TagString: Untagged
@@ -49,7 +50,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 658550404306399942}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -84,6 +85,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &2462525628112095399
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 658550404306399942}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 200, y: 200, z: 10}
+  m_Center: {x: -100, y: 100, z: -5}
 --- !u!1 &7064856343689370326
 GameObject:
   m_ObjectHideFlags: 0
