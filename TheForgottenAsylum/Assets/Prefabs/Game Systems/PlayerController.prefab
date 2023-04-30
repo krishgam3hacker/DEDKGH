@@ -166,10 +166,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 26.82
+  m_fontSize: 39.7
   m_fontSizeBase: 26.82
   m_fontWeight: 400
-  m_enableAutoSizing: 0
+  m_enableAutoSizing: 1
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
@@ -1643,7 +1643,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: ec49e966e5edb8e46b60a53028db04e9, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.883
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2013,7 +2013,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 8fe1f5cab56a52a48ab1833351f3c9d7, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.883
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2142,7 +2142,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 47e8df29d34528742a7db87e6f9f5ef1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.883
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3156,7 +3156,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 95cf09d676caab942a28e70131721b6d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.883
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4142,7 +4142,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: a56be4b7770727d429d5bc779a01f942, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.883
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4271,7 +4271,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 74eb6004e9f340842be74334d08c7827, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.883
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -4536,9 +4536,9 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.71799237, b: 0.5424528, a: 1}
-  m_Intensity: 5
+  m_Intensity: 8
   m_Range: 35
-  m_SpotAngle: 77.09108
+  m_SpotAngle: 90.3558
   m_InnerSpotAngle: 57.908222
   m_CookieSize: 10
   m_Shadows:
@@ -4578,7 +4578,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -4622,7 +4622,7 @@ MonoBehaviour:
   text: {fileID: 8089216923694599057}
   batteryText: {fileID: 7868339459906659198}
   lifetime: 100
-  batteries: 0
+  batteries: 2
   flashON: {fileID: 8089216922660985004}
   flashOFF: {fileID: 8089216922521342205}
 --- !u!1 &8089216921803092503
@@ -5002,7 +5002,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: a56be4b7770727d429d5bc779a01f942, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.883
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5401,7 +5401,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: fb9e5f28d9d21ff49ab0a2f026557fc5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.883
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5530,7 +5530,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 31ddd1f506375c444bba9f74eba21b44, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.883
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -6009,7 +6009,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: b80d2bb9bf4fac14786eb9966f23ec0b,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: e93f2a60b3950ae44a51a862427c9bbd, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 523db45471f1e8049be41626bc0405d8, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -6275,7 +6275,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: b80d2bb9bf4fac14786eb9966f23ec0b,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 530d4960251dbdd45a73fd09ca01f592, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 66a8cf9e1acc62441885fe65b0b04032, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -7356,7 +7356,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 31ddd1f506375c444bba9f74eba21b44, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.883
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7485,7 +7485,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 31ddd1f506375c444bba9f74eba21b44, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.883
   m_Pitch: 1
   Loop: 0
   Mute: 0
