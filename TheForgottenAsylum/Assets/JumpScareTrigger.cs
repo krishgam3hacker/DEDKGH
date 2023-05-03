@@ -30,7 +30,7 @@ public class JumpScareTrigger : MonoBehaviour
     IEnumerator RemoveTrigger()
     {
         yield return new WaitForSeconds(timer);
-        Destroy(this);
+        Destroy(gameObject);
 
     }
 
