@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3447973397369296442}
   - component: {fileID: 3447973397369296443}
   - component: {fileID: 3447973397369296440}
-  - component: {fileID: 3447973397369296441}
   - component: {fileID: 3447973397369296446}
+  - component: {fileID: 1128956443}
   m_Layer: 0
   m_Name: Note
   m_TagString: Untagged
@@ -27,9 +27,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3447973397369296447}
-  m_LocalRotation: {x: -0, y: 0.77380145, z: -0, w: 0.6334283}
+  m_LocalRotation: {x: 0, y: 0.77380145, z: 0, w: 0.6334282}
   m_LocalPosition: {x: 1.219, y: 3.844, z: 1.752}
-  m_LocalScale: {x: 0.43431, y: 0.011309433, z: 0.43431}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3447973397369296447}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 8fa7deb79d061f04f9fdf3c0091cade4, type: 3}
 --- !u!23 &3447973397369296440
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 7490952440742008943, guid: 14dd00f306490c64ba66b3bf2887de4d, type: 3}
+  - {fileID: 2100000, guid: bbd94da9b861c894098c02f902fb4c32, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,19 +85,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3447973397369296441
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3447973397369296447}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3447973397369296446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,3 +104,16 @@ MonoBehaviour:
   pickUpText: {fileID: 0}
   pickUpSound: {fileID: 0}
   inReach: 0
+--- !u!65 &1128956443
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3447973397369296447}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.21, y: 0, z: 0.29}
+  m_Center: {x: 0, y: 0.000508, z: 0}
