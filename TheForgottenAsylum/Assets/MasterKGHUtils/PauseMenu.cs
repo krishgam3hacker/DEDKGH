@@ -49,6 +49,14 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused= true;
     }
 
+    public void Restart()
+    {
+        Debug.Log("GameRestarted");
+        SceneManager.LoadScene("Map_kgh");
+        Time.timeScale = 1f;
+        GameIsPaused = false;
+    }
+
     public void LoadMenu()
     {
         Debug.Log("Loading Menu");
