@@ -21,9 +21,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Leakage_Decal
-  m_Shader: {fileID: -6465566751694194690, guid: 9b4e681081e2b4c469111bb649e2f7ee,
-    type: 3}
-  m_ValidKeywords: []
+  m_Shader: {fileID: 4800000, guid: 719fc013a5a345f42be4170c9814917a, type: 3}
+  m_ValidKeywords:
+  - _UnityFogEnable
   m_InvalidKeywords:
   - _SPECULAR_SETUP
   - _SURFACE_TYPE_TRANSPARENT
@@ -116,30 +116,42 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
+    - _DecalDstBlend: 10
     - _DecalMeshBiasType: 0
     - _DecalMeshDepthBias: 0
     - _DecalMeshViewBias: 0
+    - _DecalSrcBlend: 5
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DrawOrder: 0
     - _DstBlend: 10
     - _EnvironmentReflections: 1
+    - _FracUVEnable: 0
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
+    - _MulAlphaToRGB: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _ProjectionAngleDiscardEnable: 0
+    - _ProjectionAngleDiscardThreshold: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 5
+    - _StencilComp: 0
+    - _StencilRef: 0
+    - _SupportOrthographicCamera: 0
     - _Surface: 1
+    - _UnityFogEnable: 1
     - _WorkflowMode: 0
+    - _ZTest: 0
     - _ZWrite: 0
     m_Colors:
+    - _AlphaRemap: {r: 1, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
