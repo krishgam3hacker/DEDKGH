@@ -1,10 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TurnPowerOn : MonoBehaviour
 {
+    
     public GameObject[] lights;
+    public GameObject[] _doors;
+    public GameObject[] _dialogues;
 
     public GameObject text;
 
@@ -18,6 +22,16 @@ public class TurnPowerOn : MonoBehaviour
         foreach (GameObject ob in lights)
         {
             ob.SetActive(false);
+        }
+
+        foreach (GameObject dr in _doors)
+        {
+            dr.GetComponentInChildren<Doors>().enabled = false;
+        }
+
+        foreach(GameObject dia in _dialogues)
+        {
+            dia.GetComponent<Dialogue>().enabled = false;
         }
 
         text.SetActive(false);
@@ -57,6 +71,16 @@ public class TurnPowerOn : MonoBehaviour
                 ob.SetActive(true);
             }
 
+            foreach (GameObject dr in _doors)
+            {
+                dr.GetComponentInChildren<Doors>().enabled = true;
+            }
+
+            foreach (GameObject dia in _dialogues)
+            {
+                dia.GetComponent<Dialogue>().enabled = true;
+            }
+
             inReach = false;
             text.SetActive(false);
         }
@@ -68,6 +92,16 @@ public class TurnPowerOn : MonoBehaviour
                 ob.SetActive(false);
             }
 
+
+            foreach (GameObject dr in _doors)
+            {
+                dr.GetComponentInChildren<Doors>().enabled = false;
+            }
+
+            foreach (GameObject dia in _dialogues)
+            {
+                dia.GetComponent<Dialogue>().enabled = false;
+            }
         }
 
     }
