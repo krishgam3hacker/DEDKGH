@@ -27,18 +27,46 @@ public class PlayerStats : MonoBehaviour
 
     [Header("Afflictions")]
     [SerializeField] public bool isOnFire = false;
+    [SerializeField] private GameObject fireParticle;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if(isOnFire == true)
+        {
+            fireParticle.gameObject.SetActive(true);
+        }
+
+        if(isOnFire == false)
+        {
+            StartCoroutine(TurnOffFireAffliction(10f));
+        }
     }
+
+    private void LateUpdate()
+    {
+
+    }
+
+
+    private IEnumerator TurnOffFireAffliction(float delay)
+    {
+        // Wait for the specified delay.
+        yield return new WaitForSeconds(delay);
+
+        // Turn off the fire particle after the delay.
+        fireParticle.gameObject.SetActive(false);
+        Debug.Log(delay+ "seconds done");
+    }
+
+
+
 }
