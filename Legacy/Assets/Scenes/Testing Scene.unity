@@ -296,12 +296,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 316744954}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.465, y: -0.379, z: -0.059999958}
+  m_LocalRotation: {x: -0.16045366, y: -0.28918332, z: -0.9422464, w: -0.052909024}
+  m_LocalPosition: {x: 0.234, y: 0.686, z: -0.725}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 543450652394631961}
+  m_Father: {fileID: 608321760499102350}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &316744956
@@ -5563,7 +5563,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.7
+  m_Height: 1.62
   m_Radius: 0.15
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -5595,7 +5595,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1564361477}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.066}
+  m_LocalPosition: {x: 0.06, y: 0.037, z: 0.288}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5621,10 +5621,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.11530578
-  m_Height: 1.4745728
+  m_Radius: 0.52
+  m_Height: 1.38
   m_Direction: 1
-  m_Center: {x: 0, y: 0.7146929, z: 0.011075377}
+  m_Center: {x: -0.06608611, y: 0.71469283, z: 0.011075378}
 --- !u!1001 &1832053201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5706,12 +5706,12 @@ PrefabInstance:
     - target: {fileID: 1030710826051671165, guid: f9b93cfcd6547044f92090bf308a8351,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.15045688
+      value: 0.15045685
       objectReference: {fileID: 0}
     - target: {fileID: 1030710826051671165, guid: f9b93cfcd6547044f92090bf308a8351,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0020400009
+      value: 0.0020400004
       objectReference: {fileID: 0}
     - target: {fileID: 2871139104698399490, guid: f9b93cfcd6547044f92090bf308a8351,
         type: 3}
@@ -5817,12 +5817,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2038636200}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.345, y: -0.379, z: -0.06}
+  m_LocalRotation: {x: 0.14165148, y: -0.29125032, z: -0.9452559, w: 0.039992888}
+  m_LocalPosition: {x: -0.242, y: 0.69, z: -0.702}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 543450652394631961}
+  m_Father: {fileID: 2348787447888644803}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &2038636202
@@ -10853,8 +10853,6 @@ Transform:
   - {fileID: 5465940245543506829}
   - {fileID: 148658092}
   - {fileID: 1564361478}
-  - {fileID: 2038636201}
-  - {fileID: 316744955}
   - {fileID: 719747670}
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -10872,6 +10870,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2916570862517863002}
+  - {fileID: 316744955}
   m_Father: {fileID: 5477181765220358696}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11502,6 +11501,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6452705234187707484}
+  - {fileID: 2038636201}
   m_Father: {fileID: 7151331951600890415}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13624,11 +13624,11 @@ Cloth:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4570447624882178628}
   m_Enabled: 1
-  m_StretchingStiffness: 0.5
-  m_BendingStiffness: 0.2
+  m_StretchingStiffness: 0.9
+  m_BendingStiffness: 0.6
   m_UseTethers: 1
   m_UseGravity: 1
-  m_Damping: 0.55
+  m_Damping: 0.35
   m_ExternalAcceleration: {x: -1, y: 2.2, z: 0}
   m_RandomAcceleration: {x: -1, y: 1, z: 0.5}
   m_WorldVelocityScale: 0.5
@@ -16457,10 +16457,10 @@ Cloth:
   - maxDistance: 0
     collisionSphereDistance: 3.4028235e+38
   m_CapsuleColliders:
-  - {fileID: 1564361479}
+  - {fileID: 0}
   m_SphereColliders:
-  - first: {fileID: 2038636202}
-    second: {fileID: 316744956}
+  - first: {fileID: 0}
+    second: {fileID: 0}
   m_SelfCollisionDistance: 0
   m_SelfCollisionStiffness: 0.2
   m_SelfAndInterCollisionIndices: 
