@@ -29,6 +29,9 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] public bool isOnFire = false;
     [SerializeField] private GameObject fireParticle;
 
+    [SerializeField] public bool isOnWater = false;
+    [SerializeField] private GameObject waterParticle;
+
 
 
     // Start is called before the first frame update
@@ -47,7 +50,21 @@ public class PlayerStats : MonoBehaviour
 
         if(isOnFire == false)
         {
-            StartCoroutine(TurnOffFireAffliction(10f));
+            
+        fireParticle.gameObject.SetActive(false);
+          //  StartCoroutine(TurnOffFireAffliction(10f));
+        }
+
+        if(isOnWater == true)
+        {
+            waterParticle.gameObject.SetActive(true);
+        }
+
+        if(isOnWater == false)
+        {
+            
+        waterParticle.gameObject.SetActive(false);
+           // StartCoroutine(TurnOffWaterAffliction(10f));
         }
     }
 
@@ -67,6 +84,15 @@ public class PlayerStats : MonoBehaviour
         Debug.Log(delay+ "seconds done");
     }
 
+    private IEnumerator TurnOffWaterAffliction(float delay)
+    {
+        // Wait for the specified delay.
+        yield return new WaitForSeconds(delay);
+
+        // Turn off the fire particle after the delay.
+        waterParticle.gameObject.SetActive(false);
+        Debug.Log(delay+ "seconds done");
+    }
 
 
 }
